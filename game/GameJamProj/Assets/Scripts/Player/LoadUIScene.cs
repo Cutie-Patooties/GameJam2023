@@ -12,18 +12,11 @@ using UnityEngine.SceneManagement;
 public class LoadUIScene : MonoBehaviour
 {
 
-    [SerializeField] string uiSceneName = "UIScene";
-
     // Start is called before the first frame update
     void Start()
     {
         // Load the scene
-        SceneManager.LoadSceneAsync(uiSceneName, LoadSceneMode.Additive);
+        SceneManager.LoadScene("PlayerUI", LoadSceneMode.Additive);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
