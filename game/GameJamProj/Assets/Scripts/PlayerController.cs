@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector2 movementInput = new(horizontalInput, verticalInput);
-        playerRigidBody.velocity = movementInput * movementSpeed;
+        playerRigidBody.velocity = movementSpeed * movementInput;
 
         if (movementInput != Vector2.zero)
             lastMovementDirection = movementInput.normalized;
