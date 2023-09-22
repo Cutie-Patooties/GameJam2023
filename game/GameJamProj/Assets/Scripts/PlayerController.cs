@@ -9,6 +9,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Variables regarding current player information
+    public float maxHealth = 100;
+    public float currentHealth = 100;
+
     // Variables needed for Movement
     public float movementSpeed = 1f;
     private Rigidbody2D playerRigidBody;
