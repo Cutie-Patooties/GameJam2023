@@ -1,7 +1,7 @@
 /**
  * Author: Alan
  * Contributors: N/A
- * Description: you get to write this
+ * Description: This script handles the logic for the player hitting an enemy
 **/
 
 using UnityEngine;

@@ -1,3 +1,9 @@
+/**
+ * Author: Alan
+ * Contributors: N/A
+ * Description: This script performs a screen shake effect for hitting an enemy
+**/
+
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour

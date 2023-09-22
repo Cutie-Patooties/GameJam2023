@@ -1,5 +1,10 @@
+/**
+ * Author: Alan
+ * Contributors: N/A
+ * Description: This script handles both player movement and combat
+**/
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour

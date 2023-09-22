@@ -1,3 +1,9 @@
+/**
+ * Author: Alan
+ * Contributors: N/A
+ * Description: This script keeps track of how many enemies are near the player
+**/
+
 using UnityEngine;
 
 public class EnemyProximityCheck : MonoBehaviour
