@@ -5376,6 +5376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5113a3ef59c43a444857ec110f0e97ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
   movementSpeed: 7
   attackDelay: 0.1
   attackHitbox: {fileID: 174926908640728669}
