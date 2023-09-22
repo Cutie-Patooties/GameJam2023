@@ -6,21 +6,42 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Search;
 
 public class HealthBar : MonoBehaviour
 {
 
-    [SerializeField] private float healthBarMaxSize = 3.0f;
+    // The healthbar and text objects to modify
+    [SerializeField] private GameObject healthBarObject = null;
+    [SerializeField] private GameObject healthTextObject = null;
+
+    [SerializeField] private float healthBarMaxSize = 400.0f;
     [SerializeField] private float healthbarSpeed = 10.0f;
 
-    private PlayerController playerController;
+    [SerializeField] private bool centeredBar = true;
+
+    // Gets player controller script
+    private PlayerController playerController = null;
+
+    // Store transform component for health bar
+    Transform barTransform = null;
+
+    // Store TextMeshProUGUI component for health bar text
+    TextMeshProUGUI barText = null;
 
     // Start is called before the first frame update
     void Start()
     {
         // Get the player controller from the player object
         playerController = GameObject.Find("EntityPlayer").GetComponent<PlayerController>();
+        // Set the barTransform to this transform component
+        if(healthBarObject != null)
+            barTransform = healthBarObject.GetComponent<Transform>();
+        // Gets parent text mesh
+        if(healthTextObject != null)
+            barText = healthTextObject.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -34,8 +55,16 @@ public class HealthBar : MonoBehaviour
         float maxHealth = playerController.maxHealth;
         float currHealth = playerController.currentHealth;
 
-        Transform barTransform = GetComponent<Transform>();
+        // Ensure parent GameObject is a text box (if not assume this is intentional and no text is wanted)
+        if(barText != null)
+        {
+            barText.text = "HP: " + currHealth.ToString() + " / " + maxHealth.ToString();
+        }
 
+        // Guards against missing bar transform
+        if (barTransform == null) return;
+
+        // Set the scale of the health bar
         barTransform.localScale = new Vector3(
             Mathf.Lerp(
                 barTransform.localScale.x,
@@ -45,6 +74,17 @@ public class HealthBar : MonoBehaviour
             barTransform.localScale.y, 
             barTransform.localScale.z
         );
+
+        // Offset position by scale (if not a centered bar)
+        if (!centeredBar)
+        {
+            barTransform.localPosition =
+                new Vector3(
+                    (barTransform.localScale.x / 2.0f) - (healthBarMaxSize / 2.0f),
+                    barTransform.localPosition.y,
+                    barTransform.localPosition.z
+                );
+        }
 
     }
 }
