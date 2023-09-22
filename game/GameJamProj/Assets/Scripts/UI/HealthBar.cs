@@ -1,3 +1,9 @@
+/**
+ * Author: Hudson
+ * Contributors: 
+ * Description: Controls health bar in UI
+**/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
