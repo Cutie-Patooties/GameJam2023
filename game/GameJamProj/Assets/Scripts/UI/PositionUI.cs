@@ -21,30 +21,62 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float offsetX = 0.0f;
     [SerializeField] private float offsetY = 0.0f;
 
-    // Camera in UI Level
-    private Camera uiCam = null;
+    // Transform component
+    Transform transform = null;
 
-    // Start is called before the first frame update
+    // Start function
     void Start()
     {
-        // Set uiCam to camera in scene
-        uiCam = Camera.main;
+        transform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        // Don't do anything if we cannot get the camera
-        if (uiCam == null) return;
+        // Guard in case transform component cannot be found
+        if (transform == null) return;
 
-        // Get the width and height of the screen
-        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-        // Convert this data for use in world coordinates
-        Vector3 viewableSize = uiCam.ScreenToWorldPoint(new Vector3(screenSize.x, screenSize.y, 10));
+        // Calculate the size of 1 quadrant of the coordinate plane
+        Vector2 quadrantSize = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
 
-        Debug.Log("Screen size: (" + screenSize.x + ", " + screenSize.y + ")");
-        Debug.Log("Viewable size: (" + viewableSize.x + ", " + viewableSize.y + ")");
+        // Position self according to config
+        Vector3 finalPosition = new Vector3(0, 0, 0);
+
+        // X position
+        switch (positionX)
+        {
+            case -1:    // Align left
+                finalPosition.x = -quadrantSize.x;
+                break;
+            case 1:     // Align right
+                finalPosition.x = quadrantSize.x;
+                break;
+            default:    // Align center
+                finalPosition.x = 0;
+                break;
+        }
+
+        // Y position
+        switch (positionY)
+        {
+            case -1:    // Align bottom
+                finalPosition.y = -quadrantSize.y;
+                break;
+            case 1:     // Align top
+                finalPosition.y = quadrantSize.y;
+                break;
+            default:    // Align center
+                finalPosition.y = 0;
+                break;
+        }
+
+        // Apply offset
+        finalPosition += new Vector3(offsetX, offsetY, 0);
+
+        // Set position to finalPosition
+        transform.localPosition = finalPosition;
+        Debug.Log(finalPosition);
 
     }
 }
