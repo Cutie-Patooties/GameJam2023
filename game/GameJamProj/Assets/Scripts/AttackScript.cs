@@ -1,3 +1,9 @@
+/**
+ * Author: Alan
+ * Contributors: N/A
+ * Description: you get to write this
+**/
+
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour
