@@ -15,10 +15,10 @@ public class LoadUIScene : MonoBehaviour
     [SerializeField] string uiSceneName = "UIScene";
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         // Load the scene
-        SceneManager.LoadScene(uiSceneName, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(uiSceneName, LoadSceneMode.Additive);
     }
 
     // Update is called once per frame
