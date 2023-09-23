@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 400, y: 25, z: 40}
+  m_LocalScale: {x: 0, y: 25, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6323234007255977595}
@@ -714,7 +714,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 400, y: 25, z: 40}
+  m_LocalScale: {x: 0, y: 25, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3452111774113775800}
@@ -932,7 +932,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 400, y: 25, z: 40}
+  m_LocalScale: {x: 0, y: 25, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7049218475710222729}
@@ -1057,11 +1057,12 @@ MonoBehaviour:
   textObject: {fileID: 6498777404313780259}
   barMaxSize: 400
   barChangeSpeed: 10
-  enforceBarBounds: 1
-  centeredBar: 0
-  displayAsPercentage: 0
   maxBarValue: 100
   currentBarValue: 0
+  enforceBarBounds: 1
+  enforceTextBounds: 0
+  centeredBar: 0
+  displayAsPercentage: 0
 --- !u!1 &7893842006360534610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,11 +1131,12 @@ MonoBehaviour:
   textObject: {fileID: 2967666387138255209}
   barMaxSize: 400
   barChangeSpeed: 10
-  enforceBarBounds: 1
-  centeredBar: 0
-  displayAsPercentage: 1
   maxBarValue: 100
   currentBarValue: 0
+  enforceBarBounds: 1
+  enforceTextBounds: 0
+  centeredBar: 0
+  displayAsPercentage: 1
 --- !u!1 &8036798609613912550
 GameObject:
   m_ObjectHideFlags: 0
