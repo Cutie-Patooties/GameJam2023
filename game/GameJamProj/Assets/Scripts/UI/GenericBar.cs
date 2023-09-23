@@ -22,13 +22,15 @@ public class GenericBar : MonoBehaviour
     [SerializeField] private float barMaxSize = 400.0f;
     [SerializeField] private float barChangeSpeed = 10.0f;
 
+    /* Bar display info */
+    [SerializeField] private float maxBarValue = 100.0f;
+    [SerializeField] private float currentBarValue = 0.0f;
+
+    /* More options */
     [SerializeField] private bool enforceBarBounds = true;
+    [SerializeField] private bool enforceTextBounds = false;
     [SerializeField] private bool centeredBar = false;
     [SerializeField] private bool displayAsPercentage = false;
-
-    /* Bar display info */
-    public float maxBarValue = 100.0f;
-    public float currentBarValue = 0.0f;
 
     // Store transform component of the bar
     private Transform m_barTransform = null;
@@ -54,20 +56,51 @@ public class GenericBar : MonoBehaviour
     void Update()
     {
 
-        // Guard against missing bar transform component
-        if (m_barTransform == null) return;
+        // Modify bar size
+        UpdateBar(currentBarValue, maxBarValue);
+
+        // Update bar text
+        UpdateText(currentBarValue, maxBarValue);
+
+    }
+
+    /// <summary>
+    /// Sets both current and max values for the bar
+    /// </summary>
+    /// <param name="newValue">Update the old current value with a new one</param>
+    /// <param name="newMaxValue">Update the old max value with a new one</param>
+    public void SetBarValue(float newValue, float newMaxValue)
+    {
+        currentBarValue = newValue;
+        maxBarValue = newMaxValue;
+    }
+
+    /// <summary>
+    /// Sets only the current value for the bar and leaves the old max the same
+    /// </summary>
+    /// <param name="newValue">Update the current value with a new one</param>
+    public void SetBarValue(float newValue)
+    {
+        SetBarValue(newValue, maxBarValue);
+    }
+
+    private void UpdateBar(float currVal, float maxVal)
+    {
 
         // Check if we should enforce bar bounds
-        if (enforceBarBounds && currentBarValue > maxBarValue)
-            currentBarValue = maxBarValue;
-        if (enforceBarBounds && currentBarValue < 0)
-            currentBarValue = 0;
+        if (enforceBarBounds && currVal > maxVal)
+            currVal = maxBarValue;
+        if (enforceBarBounds && currVal < 0)
+            currVal = 0;
+
+        // Guard against missing bar transform component
+        if (m_barTransform == null) return;
 
         // Modify bar size
         m_barTransform.localScale = new Vector3(
             Mathf.Lerp(
                 m_barTransform.localScale.x,
-                (currentBarValue / maxBarValue) * barMaxSize,
+                (currVal / maxVal) * barMaxSize,
                 Time.deltaTime * barChangeSpeed
             ),
             m_barTransform.localScale.y,
@@ -75,7 +108,7 @@ public class GenericBar : MonoBehaviour
         );
 
         // Modify offset position
-        if(!centeredBar)
+        if (!centeredBar)
         {
             m_barTransform.localPosition =
                 new Vector3(
@@ -85,16 +118,25 @@ public class GenericBar : MonoBehaviour
                 );
         }
 
+    }
+
+    private void UpdateText(float currVal, float maxVal)
+    {
+
+        // Check if we should enforce text bounds
+        if (enforceTextBounds && currVal > maxVal)
+            currVal = maxBarValue;
+        if (enforceTextBounds && currVal < 0)
+            currVal = 0;
+
         // Guard against no bar text
         if (m_barText == null) return;
 
-        /* ANYTHING BELOW HERE IS ONLY RUN IF BAR TEXT IS SPECIFIED */
-
         m_barText.text = (
-            displayAsPercentage ? 
-                "" + (currentBarValue / maxBarValue) * 100 + "%"
+            displayAsPercentage ?
+                ((currVal / maxVal) * 100).ToString() + "%"
             :
-                currentBarValue.ToString() + " / " + maxBarValue.ToString()
+                currVal.ToString() + " / " + maxVal.ToString()
         );
 
     }
