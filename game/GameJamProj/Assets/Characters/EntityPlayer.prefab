@@ -204,7 +204,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 70
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -319,7 +319,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   attackDelay: 0.1
   attackHitbox: {fileID: 719126991662504196}
   shootDelay: 0.15
-  projectileSpeed: 50
+  projectileSpeed: 10
   projectileObject: {fileID: 7312258141836990282, guid: fb0b46faa1c85a540b6f7610a429e2b2, type: 3}
 --- !u!1 &2822717164804990604
 GameObject:
@@ -499,9 +499,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.9927153, b: 0.5235849, a: 0.7058824}
+  m_Color: {r: 1, g: 0.9927153, b: 0.5235849, a: 0.09411765}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

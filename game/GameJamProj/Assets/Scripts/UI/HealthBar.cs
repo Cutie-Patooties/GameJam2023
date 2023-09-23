@@ -58,7 +58,7 @@ public class HealthBar : MonoBehaviour
         // Ensure parent GameObject is a text box (if not assume this is intentional and no text is wanted)
         if(barText != null)
         {
-            barText.text = "HP   " + currHealth.ToString() + " / " + maxHealth.ToString();
+            barText.text = currHealth.ToString() + " / " + maxHealth.ToString();
         }
 
         // Guards against missing bar transform

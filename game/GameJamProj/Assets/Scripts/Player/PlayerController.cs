@@ -1,6 +1,6 @@
 /**
  * Author: Alan
- * Contributors: N/A
+ * Contributors: Hudson
  * Description: This script handles both player movement and combat
 **/
 
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             GameObject projectile = Instantiate(projectileObject, transform.position, Quaternion.identity);
 
             Vector2 direction = (playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;
-            projectile.GetComponent<Rigidbody2D>().velocity = direction * -1.0f;
+            projectile.GetComponent<Rigidbody2D>().velocity = direction;
             projectile.GetComponent<Rigidbody2D>().velocity = projectile.GetComponent<Rigidbody2D>().velocity.normalized * projectileSpeed;
 
             projectile.GetComponent<ProjectileAttackScript>().damage += damageIncrease;
