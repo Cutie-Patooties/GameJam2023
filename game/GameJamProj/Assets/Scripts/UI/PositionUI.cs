@@ -22,7 +22,7 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float offsetY = 0.0f;
 
     // Transform component
-    Transform transform = null;
+    private Transform transform = null;
 
     // Start function
     void Start()
