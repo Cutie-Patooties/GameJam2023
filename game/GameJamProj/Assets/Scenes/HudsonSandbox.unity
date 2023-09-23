@@ -193,6 +193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 445513277453963187, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -85
+      objectReference: {fileID: 0}
     - target: {fileID: 2475323674247163456, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -273,9 +277,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7454100379272209159, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_text
+      value: 100%
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888017468277608683, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_text
+      value: 100 / 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8036798609613912550, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8056872147967371485, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 9166966591357051202, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
       propertyPath: m_Camera
