@@ -64,6 +64,10 @@ public class HealthBar : MonoBehaviour
         // Guards against missing bar transform
         if (barTransform == null) return;
 
+        // Ensure that HP bar stays within bounds
+        if (currHealth < 0.0f) currHealth = 0.0f;
+        if (currHealth > maxHealth) currHealth = maxHealth;
+
         // Set the scale of the health bar
         barTransform.localScale = new Vector3(
             Mathf.Lerp(
