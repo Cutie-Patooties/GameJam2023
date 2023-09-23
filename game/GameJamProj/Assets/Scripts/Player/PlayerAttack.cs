@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-public class AttackScript : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     // Variables needed for this script
     [SerializeField] private ParticleSystem killEffect;
@@ -20,6 +20,11 @@ public class AttackScript : MonoBehaviour
             Destroy(other.gameObject);
             killEffect.Play();
             Camera.main.GetComponent<CameraShake>().Shake(0.1f, shakeIntensity);
+
+            if (gameObject.tag == "Projectile")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

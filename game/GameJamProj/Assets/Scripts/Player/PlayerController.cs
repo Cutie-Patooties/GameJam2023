@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     // Variables regarding current player information
     public float maxHealth = 100;
     public float currentHealth = 100;
+    public float invincibilityDuration = 3f;
+    private bool isInvincible;
 
     // Variables needed for Movement
     public float movementSpeed = 1f;
@@ -23,11 +25,17 @@ public class PlayerController : MonoBehaviour
     private bool canAttack;
     [SerializeField] private GameObject attackHitbox;
 
+    // Variables needed for Shooting
+    public float shootDelay = 0.1f;
+    public float projectileSpeed = 1;
+    [SerializeField] private GameObject projectileObject;
+
     // Receive and Set all Necessary Components
     private void Awake()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
         canAttack = true;
+        isInvincible = false;
     }
 
     private void Update()
@@ -56,6 +64,18 @@ public class PlayerController : MonoBehaviour
             attackHitbox.SetActive(true);
             StartCoroutine(EnableAttack());
         }
+
+        // Logic for shooting Projectile
+        if (Input.GetButton("Shoot") && canAttack)
+        {
+            canAttack = false;
+            GameObject projectile = Instantiate(projectileObject, attackHitbox.transform.position, Quaternion.identity);
+            projectile.GetComponent<Rigidbody2D>().velocity = lastMovementDirection * projectileSpeed;
+            StartCoroutine(EnableProjectile());
+        }
+
+        if (currentHealth <= 0)
+            Destroy(gameObject);
     }
 
     IEnumerator EnableAttack()
@@ -63,5 +83,27 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(attackDelay);
         attackHitbox.SetActive(false);
         canAttack = true;
+    }
+
+    IEnumerator EnableProjectile()
+    {
+        yield return new WaitForSeconds(shootDelay);
+        canAttack = true;
+    }
+
+    IEnumerator EnableInvincibility()
+    {
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Enemy") && !isInvincible)
+        {
+            isInvincible = true;
+            currentHealth -= 10;
+            StartCoroutine(EnableInvincibility());
+        }
     }
 }
