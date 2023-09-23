@@ -58,11 +58,15 @@ public class HealthBar : MonoBehaviour
         // Ensure parent GameObject is a text box (if not assume this is intentional and no text is wanted)
         if(barText != null)
         {
-            barText.text = "HP: " + currHealth.ToString() + " / " + maxHealth.ToString();
+            barText.text = "HP   " + currHealth.ToString() + " / " + maxHealth.ToString();
         }
 
         // Guards against missing bar transform
         if (barTransform == null) return;
+
+        // Ensure that HP bar stays within bounds
+        if (currHealth < 0.0f) currHealth = 0.0f;
+        if (currHealth > maxHealth) currHealth = maxHealth;
 
         // Set the scale of the health bar
         barTransform.localScale = new Vector3(
