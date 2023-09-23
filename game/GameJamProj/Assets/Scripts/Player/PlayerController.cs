@@ -28,12 +28,15 @@ public class PlayerController : MonoBehaviour
     // Variables needed for Shooting
     public float shootDelay = 0.1f;
     public float projectileSpeed = 1;
+    private int damageIncrease = 0;
+    private Camera playerCamera;
     [SerializeField] private GameObject projectileObject;
 
     // Receive and Set all Necessary Components
     private void Awake()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        playerCamera = Camera.main;
         canAttack = true;
         isInvincible = false;
     }
@@ -53,7 +56,7 @@ public class PlayerController : MonoBehaviour
         if (canAttack)
             if (movementInput != Vector2.zero)
             {
-                Vector2 hitboxOffset = lastMovementDirection * 1.45f;
+                Vector2 hitboxOffset = lastMovementDirection * 1.25f;
                 attackHitbox.transform.position = (Vector2)transform.position + hitboxOffset;
             }
 
@@ -69,13 +72,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Shoot") && canAttack)
         {
             canAttack = false;
-            GameObject projectile = Instantiate(projectileObject, attackHitbox.transform.position, Quaternion.identity);
-            projectile.GetComponent<Rigidbody2D>().velocity = lastMovementDirection * projectileSpeed;
+
+            GameObject projectile = Instantiate(projectileObject, transform.position, Quaternion.identity);
+
+            Vector2 direction = (playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;
+            projectile.GetComponent<Rigidbody2D>().velocity = direction * -1.0f;
+            projectile.GetComponent<Rigidbody2D>().velocity = projectile.GetComponent<Rigidbody2D>().velocity.normalized * projectileSpeed;
+
+            projectile.GetComponent<ProjectileAttackScript>().damage += damageIncrease;
+
             StartCoroutine(EnableProjectile());
         }
 
         if (currentHealth <= 0)
-            Destroy(gameObject);
+        {
+            Debug.Log("Player Died.");
+        }
     }
 
     IEnumerator EnableAttack()

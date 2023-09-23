@@ -1,12 +1,12 @@
 /**
  * Author: Alan
  * Contributors: N/A
- * Description: This script handles the logic for the player hitting an enemy
+ * Description: This script handles the logic for the player hitting an enemy with a melee attack
 **/
 
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class MeleeAttackScript : MonoBehaviour
 {
     // Variables needed for this script
     [SerializeField] private ParticleSystem killEffect;
@@ -20,11 +20,6 @@ public class PlayerAttack : MonoBehaviour
             Destroy(other.gameObject);
             killEffect.Play();
             Camera.main.GetComponent<CameraShake>().Shake(0.1f, shakeIntensity);
-
-            if (gameObject.tag == "Projectile")
-            {
-                Destroy(gameObject);
-            }
         }
     }
 }

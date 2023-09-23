@@ -76,7 +76,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         // Set position to finalPosition
         transform.localPosition = finalPosition;
-        Debug.Log(finalPosition);
+        //Debug.Log(finalPosition);
 
     }
 }
