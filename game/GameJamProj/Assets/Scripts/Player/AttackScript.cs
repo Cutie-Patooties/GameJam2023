@@ -10,6 +10,7 @@ public class AttackScript : MonoBehaviour
 {
     // Variables needed for this script
     [SerializeField] private ParticleSystem killEffect;
+    [SerializeField] private float shakeIntensity;
 
     // This will kill an enemy upon hitting them
     private void OnTriggerEnter2D(Collider2D other)
@@ -18,7 +19,7 @@ public class AttackScript : MonoBehaviour
         {
             Destroy(other.gameObject);
             killEffect.Play();
-            Camera.main.GetComponent<CameraShake>().Shake(0.1f, 0.2f);
+            Camera.main.GetComponent<CameraShake>().Shake(0.1f, shakeIntensity);
         }
     }
 }

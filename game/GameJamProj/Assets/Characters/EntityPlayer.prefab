@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killEffect: {fileID: 5404067920156120812}
+  shakeIntensity: 0.3
 --- !u!1 &423683876364969529
 GameObject:
   m_ObjectHideFlags: 0
