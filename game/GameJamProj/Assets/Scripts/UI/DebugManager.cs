@@ -14,6 +14,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class DebugManager : MonoBehaviour
 {
 
+    public bool debugEnabled = false;
+
     // Game Info
     [SerializeField] private string gameTitle = "Game Title";
     [SerializeField] private string gameVersion = "0.0.0";
@@ -53,8 +55,14 @@ public class DebugManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Check if user tries to toggle debug menu
+        if(Input.GetKeyDown(KeyCode.F3)) debugEnabled = !debugEnabled;
+
+        // Update debug menu and calc FPS
         CalcFPS();
         UpdateDebugInfo();
+
     }
 
     /// <summary>
@@ -70,6 +78,11 @@ public class DebugManager : MonoBehaviour
 
     private void UpdateDebugInfo()
     {
+
+        GetComponent<TextMeshProUGUI>().enabled = debugEnabled;
+
+        // Don't do anything if debug is disabled
+        if (!debugEnabled) return;
 
         // Reset textbox
         GetComponent<TextMeshProUGUI>().text = "";
