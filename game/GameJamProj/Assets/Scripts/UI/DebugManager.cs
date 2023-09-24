@@ -53,10 +53,8 @@ public class DebugManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        CalcFPS();
         UpdateDebugInfo();
-
     }
 
     /// <summary>
@@ -73,8 +71,6 @@ public class DebugManager : MonoBehaviour
     private void UpdateDebugInfo()
     {
 
-        CalcFPS();
-
         // Reset textbox
         GetComponent<TextMeshProUGUI>().text = "";
 
@@ -86,9 +82,7 @@ public class DebugManager : MonoBehaviour
 
         // Print additional info
         foreach(var debugText in customDebugFields)
-        {
             PrintToDebugln(debugText.Value);
-        }
 
     }
 
