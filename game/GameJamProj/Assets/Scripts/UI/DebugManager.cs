@@ -73,7 +73,7 @@ public class DebugManager : MonoBehaviour
     public void UpdateCustomDebugField(string fieldName, string content)
     {
         // Add or set field
-        customDebugFields[fieldName] = content;
+        customDebugFields[fieldName.ToLower()] = content;
     }
 
     private void UpdateDebugInfo()
