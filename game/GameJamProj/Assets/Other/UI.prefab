@@ -245,8 +245,9 @@ GameObject:
   - component: {fileID: 8042618919904112839}
   - component: {fileID: 8063972598934434683}
   - component: {fileID: 1916352871627826452}
+  - component: {fileID: 2882260017290913014}
   m_Layer: 5
-  m_Name: Debug Text
+  m_Name: DebugInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,20 +300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Title v0.3.2
-
-    - fps (- ms)
-
-
-    Player XYZ: - / - / -
-
-    Mouse
-    XY: - / -
-
-
-    Additional Debug Info:
-
-'
+  m_text: Game Title v0.3.2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -375,12 +363,28 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -552.60596, w: -309.65234}
+  m_margin: {x: 0, y: 0, z: -696.89166, w: -405.8429}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2882260017290913014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2801277351523483836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb99d28acec1a4b4e9dd9b9027098614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTitle: Game Title
+  gameVersion: 0.3.2
+  uiCanvas: {fileID: 0}
+  debugTextbox: {fileID: 0}
 --- !u!1 &2967666387138255209
 GameObject:
   m_ObjectHideFlags: 0
