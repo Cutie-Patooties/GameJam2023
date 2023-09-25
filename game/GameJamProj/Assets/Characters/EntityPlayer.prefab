@@ -468,7 +468,7 @@ MonoBehaviour:
   projectileSpeed: 50
   superRadius: {fileID: 5853749807512181003}
   superMeter: {fileID: 0}
-  superDuration: 0.8
+  superDuration: 0.6
   energyRate: 0.5
 --- !u!1 &2822717164804990604
 GameObject:

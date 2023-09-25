@@ -88,8 +88,9 @@ public class PlayerAttack : MonoBehaviour
 
             superRadius.SetActive(true);
             superRadius.GetComponent<SuperAttackScript>().enabled = true;
-
             playerController.enabled = false;
+
+            currentEnergy = 0;
             StartCoroutine(ResetSuper());
         }
     }
@@ -116,7 +117,5 @@ public class PlayerAttack : MonoBehaviour
 
         canAttack = true;
         playerController.enabled = true;
-
-        currentEnergy = 0;
     }
 }

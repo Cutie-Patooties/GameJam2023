@@ -20,11 +20,13 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody2D enemyrb;
     private GameObject player;
+    private GameManager game;
 
     private void Start()
     {
         enemyrb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("EntityPlayer");
+        game = GameObject.Find("GameManager").GetComponent<GameManager>();
         canAttack = true;
     }
 
@@ -34,7 +36,8 @@ public class EnemyController : MonoBehaviour
         Vector2 direction = (player.transform.position - transform.position).normalized;
         enemyrb.velocity = direction * movementSpeed;
 
-        if (maxHealth <= 0)
+        // Enemy dies when health reaches zero or wave ends
+        if (maxHealth <= 0 || game.ended)
             Destroy(gameObject);
     }
 

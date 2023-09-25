@@ -41,11 +41,6 @@ public class PlayerController : MonoBehaviour
             Vector2 hitboxOffset = lastMovementDirection * 1.25f;
             attackHitbox.transform.position = (Vector2)transform.position + hitboxOffset;
         }
-
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Player Died.");
-        }
     }
 
     private void OnDisable()

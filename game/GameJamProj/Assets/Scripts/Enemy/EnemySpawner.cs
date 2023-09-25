@@ -11,16 +11,19 @@ public class EnemySpawner : MonoBehaviour
     // Variables needed for this script
     public float xRange;
     public float yRange;
+
     public float spawnRate;
     public float spawnInterval;
+    public float startTime;
+
     [SerializeField] private GameObject[] enemyObjects;
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnEnemies), 3.0f, spawnInterval);
+        InvokeRepeating(nameof(SpawnEnemies), startTime, spawnInterval);
     }
 
-    private void SpawnEnemies()
+    public void SpawnEnemies()
     {
         for(int num = 0; num < spawnRate; num++)
         {
