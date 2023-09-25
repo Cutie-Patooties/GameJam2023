@@ -26,9 +26,4 @@ public class EnemyProximityCheck : MonoBehaviour
             numberOfEnemies--;
         }
     }
-
-    private void Update()
-    {
-        Debug.Log("Number of Enemies: " + numberOfEnemies);
-    }
 }

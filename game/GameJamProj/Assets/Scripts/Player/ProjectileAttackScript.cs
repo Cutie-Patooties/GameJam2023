@@ -13,7 +13,6 @@ public class ProjectileAttackScript : MonoBehaviour
 
     [SerializeField] private GameObject blastEffect;
 
-    // 
     [SerializeField] private float maxAliveTime = 5.0f;
 
     // Keep track of time object has existed for
@@ -31,7 +30,7 @@ public class ProjectileAttackScript : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject); // Replace this code later with dealing damage
+            other.GetComponent<EnemyController>().maxHealth -= damage;
             Instantiate(blastEffect, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public float yRange;
     public float spawnRate;
     public float spawnInterval;
-    [SerializeField] private GameObject enemyObject;
+    [SerializeField] private GameObject[] enemyObjects;
 
     private void Start()
     {
@@ -25,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
         for(int num = 0; num < spawnRate; num++)
         {
             Vector2 randomPosition = new(transform.position.x + Random.Range(-xRange, xRange), transform.position.y + Random.Range(-yRange, yRange));
+            GameObject enemyObject = enemyObjects[Random.Range(0, enemyObjects.Length)];
             Instantiate(enemyObject, randomPosition, Quaternion.identity);
         }
     }

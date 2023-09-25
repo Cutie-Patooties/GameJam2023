@@ -268,7 +268,9 @@ MonoBehaviour:
   yRange: 0
   spawnRate: 1
   spawnInterval: 2
-  enemyObject: {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  enemyObjects:
+  - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
 --- !u!4 &553162471
 Transform:
   m_ObjectHideFlags: 0
@@ -570,7 +572,9 @@ MonoBehaviour:
   yRange: 8
   spawnRate: 1
   spawnInterval: 2
-  enemyObject: {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  enemyObjects:
+  - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
 --- !u!4 &1031015722
 Transform:
   m_ObjectHideFlags: 0
@@ -619,7 +623,9 @@ MonoBehaviour:
   yRange: 0
   spawnRate: 1
   spawnInterval: 2
-  enemyObject: {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  enemyObjects:
+  - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
 --- !u!4 &1211715624
 Transform:
   m_ObjectHideFlags: 0
@@ -789,6 +795,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 17}
   m_EdgeRadius: 0
+--- !u!114 &1841486221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5891092956499367994, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+  m_PrefabInstance: {fileID: 858346355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfb0e9ee1454894495264d0aeb9da59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848415985
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +916,9 @@ MonoBehaviour:
   yRange: 8
   spawnRate: 1
   spawnInterval: 2
-  enemyObject: {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  enemyObjects:
+  - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
+  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
 --- !u!4 &1999639021
 Transform:
   m_ObjectHideFlags: 0
@@ -972,6 +991,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 3541111609720368402, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      propertyPath: superMeter
+      value: 
+      objectReference: {fileID: 1841486221}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -230,8 +230,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3452111774113775800}
-  - {fileID: 6323234007255977595}
   - {fileID: 7049218475710222729}
+  - {fileID: 6323234007255977595}
   m_Father: {fileID: 2475323674247163456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2801277351523483836
@@ -1445,7 +1445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6323234007255977595
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,7 +1455,7 @@ Transform:
   m_GameObject: {fileID: 7775602371059470146}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -570, y: -350, z: 0}
+  m_LocalPosition: {x: -570, y: -437, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1479,8 +1479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionX: -1
   positionY: -1
-  offsetX: 300
-  offsetY: 75
+  offsetX: 260
+  offsetY: 50
 --- !u!114 &4279434592883754305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,7 +1530,7 @@ Transform:
   m_GameObject: {fileID: 7893842006360534610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -570, y: -400, z: 0}
+  m_LocalPosition: {x: -570, y: -387, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionX: -1
   positionY: -1
-  offsetX: 300
+  offsetX: 260
   offsetY: 25
 --- !u!114 &5891092956499367994
 MonoBehaviour:
@@ -1573,7 +1573,7 @@ MonoBehaviour:
   barMaxSize: 400
   barChangeSpeed: 10
   maxBarValue: 100
-  currentBarValue: 100
+  currentBarValue: 0
   enforceBarBounds: 1
   enforceTextBounds: 0
   centeredBar: 0
@@ -1793,7 +1793,7 @@ Transform:
   m_GameObject: {fileID: 8559897557619292413}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -570, y: -300, z: 0}
+  m_LocalPosition: {x: -570, y: -337, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1834,5 +1834,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionX: -1
   positionY: -1
-  offsetX: 300
-  offsetY: 125
+  offsetX: 260
+  offsetY: 75
