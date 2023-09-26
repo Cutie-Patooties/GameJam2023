@@ -179,16 +179,42 @@ PrefabInstance:
       propertyPath: superMeter
       value: 
       objectReference: {fileID: 1801395622}
+    - target: {fileID: 5390221341581025764, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1145891438764708334, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 675655379}
   m_SourcePrefab: {fileID: 100100000, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
 --- !u!20 &372471442 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1138930656879730515, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
   m_PrefabInstance: {fileID: 372471441}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &675655375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1145891438764708334, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+  m_PrefabInstance: {fileID: 372471441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &675655379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675655375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4353099c146e94bb0d60ecfe07d6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  divideAmount: 12
+  floatStrength: 10
 --- !u!1001 &769694252
 PrefabInstance:
   m_ObjectHideFlags: 0
