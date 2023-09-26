@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 3541111609720368402, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      propertyPath: superMeter
+      value: 
+      objectReference: {fileID: 1801395622}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -193,6 +197,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1371324591174150691, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456185963428307302, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456185963428307302, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_Color.g
+      value: 0.50028795
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456185963428307302, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7075472
+      objectReference: {fileID: 0}
     - target: {fileID: 2475323674247163456, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -276,6 +296,18 @@ PrefabInstance:
     - target: {fileID: 8036798609613912550, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383259442067008965, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_Color.b
+      value: 0.39587042
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383259442067008965, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_Color.g
+      value: 0.49325094
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383259442067008965, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6037736
       objectReference: {fileID: 0}
     - target: {fileID: 9166966591357051202, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
       propertyPath: m_Camera
@@ -7055,6 +7087,17 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &1801395622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5891092956499367994, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+  m_PrefabInstance: {fileID: 769694252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfb0e9ee1454894495264d0aeb9da59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2010281555
 GameObject:
   m_ObjectHideFlags: 0

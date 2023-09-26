@@ -30,7 +30,8 @@ public class GenericBar : MonoBehaviour
     [SerializeField] private bool enforceBarBounds = true;
     [SerializeField] private bool enforceTextBounds = false;
     [SerializeField] private bool centeredBar = false;
-    [SerializeField] private bool displayAsPercentage = false;
+    [SerializeField] private bool displayAsPercentage = false;  // overwrites formatAsTime
+    [SerializeField] private bool formatAsTime = false;
 
     // Store transform component of the bar
     private Transform m_barTransform = null;
@@ -132,12 +133,20 @@ public class GenericBar : MonoBehaviour
         // Guard against no bar text
         if (m_barText == null) return;
 
-        m_barText.text = (
-            displayAsPercentage ?
-                ((currVal / maxVal) * 100).ToString() + "%"
-            :
-                currVal.ToString() + " / " + maxVal.ToString()
-        );
+        // Display bar
+        if(displayAsPercentage)
+        {
+            m_barText.text = ((currVal / maxVal) * 100).ToString() + "%";
+        }
+        else if(formatAsTime)
+        {
+            m_barText.text = 
+                ((int)currVal / 60).ToString("00") + 
+                ":" + 
+                ((int)currVal % 60).ToString("00") + 
+                (currVal % 1).ToString(".000");
+        }
+        else m_barText.text = currVal.ToString() + " / " + maxVal.ToString();
 
     }
 
