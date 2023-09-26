@@ -1,7 +1,7 @@
 /**
  * Author: Hudson
  * Contributors: 
- * Description: Controls health bar in UI
+ * Description: manages debug
 **/
 
 using System.Collections;

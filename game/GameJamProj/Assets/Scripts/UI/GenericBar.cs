@@ -1,7 +1,7 @@
 /**
  * Author: Hudson
  * Contributors: 
- * Description: Controls health bar in UI
+ * Description: for making a generic bar
 **/
 
 using System.Collections;
