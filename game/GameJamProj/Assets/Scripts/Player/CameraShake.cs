@@ -1,6 +1,6 @@
 /**
  * Author: Alan
- * Contributors: N/A
+ * Contributors: Hudson
  * Description: This script performs a screen shake effect for hitting an enemy
 **/
 
@@ -15,6 +15,8 @@ public class CameraShake : MonoBehaviour
     private readonly float dampingSpeed = 1.0f;
     private Vector3 initialPosition;
 
+    private bool disableControlWhenUnused = false;
+
     // This script will shake the player's camera
     private void Awake()
     {
@@ -27,11 +29,13 @@ public class CameraShake : MonoBehaviour
     {
         if (shakeDuration > 0)
         {
+            disableControlWhenUnused = false;
             cameraTransform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
             shakeDuration -= Time.deltaTime * dampingSpeed;
         }
-        else
+        else if(!disableControlWhenUnused)
         {
+            disableControlWhenUnused = true;
             shakeDuration = 0f;
             cameraTransform.localPosition = initialPosition;
         }
