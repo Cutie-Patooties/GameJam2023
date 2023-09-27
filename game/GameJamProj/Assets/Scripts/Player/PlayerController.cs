@@ -31,16 +31,15 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         Vector2 movementInput = new(horizontalInput, verticalInput);
         playerRigidBody.velocity = movementSpeed * movementInput;
-
         if (movementInput != Vector2.zero)
             lastMovementDirection = movementInput.normalized;
 
         // This is for properly positioning the hitbox
-        if (movementInput != Vector2.zero)
+        /* if (movementInput != Vector2.zero)
         {
             Vector2 hitboxOffset = lastMovementDirection * 1.25f;
             attackHitbox.transform.position = (Vector2)transform.position + hitboxOffset;
-        }
+        } */ // Keep this part of code just in case
     }
 
     private void OnDisable()

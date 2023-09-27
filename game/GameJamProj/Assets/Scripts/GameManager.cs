@@ -6,6 +6,7 @@
 
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     // Other variables needed
     [SerializeField] private EnemySpawner[] enemySpawners;
+    [SerializeField] private TextMeshProUGUI waveText;
+    [SerializeField] private GenericBar waveTimer;
     private float timer = 0.0f;
     public bool ended = false;
 
@@ -32,6 +35,9 @@ public class GameManager : MonoBehaviour
         playerController = entityPlayer.GetComponent<PlayerController>();
         playerAttack = entityPlayer.GetComponent<PlayerAttack>();
         enemyProximityCheck = entityPlayer.GetComponentInChildren<EnemyProximityCheck>();
+
+        timer = waveDuration;
+        waveText.text = "WAVE " + wave;
     }
 
     void Update()
@@ -39,6 +45,7 @@ public class GameManager : MonoBehaviour
         // Game ends when player's health reaches zero, final score is shown
         if(playerController.currentHealth <= 0)
         {
+            playerController.currentHealth = 0;
             playerController.enabled = false;
             playerAttack.enabled = false;
             enemyProximityCheck.enabled = false;
@@ -52,18 +59,18 @@ public class GameManager : MonoBehaviour
         {
             score += (scoreRate * (enemyProximityCheck.numberOfEnemies + 1)) * Time.deltaTime;
 
-            if (timer >= waveDuration)
+            if (timer <= 0.0f)
             {
-                wave++;
                 timer = 0.0f;
-
+                wave++;
                 StartCoroutine(PrepareNextWave());
-                Debug.Log("WAVE " + wave);
+                waveText.text = "WAVE " + wave;
             }
             else
             {
-                timer += Time.deltaTime;
+                timer -= Time.deltaTime;
             }
+            waveTimer.SetBarValue(timer, waveDuration);
         }
     }
 
@@ -79,7 +86,9 @@ public class GameManager : MonoBehaviour
             {
                 enemySpawner.spawnRate++;
             }
+            waveDuration += 5.0f;
         }
+        timer = waveDuration;
 
         foreach (EnemySpawner enemySpawner in enemySpawners)
         {

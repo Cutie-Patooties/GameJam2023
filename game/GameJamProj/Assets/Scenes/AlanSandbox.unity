@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &217930229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3901961714279663466, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+  m_PrefabInstance: {fileID: 858346355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &362970590
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +172,8 @@ MonoBehaviour:
   - {fileID: 553162470}
   - {fileID: 1031015721}
   - {fileID: 1999639020}
+  waveText: {fileID: 217930229}
+  waveTimer: {fileID: 579597999}
   ended: 0
 --- !u!4 &362970592
 Transform:
@@ -341,6 +354,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &579597999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4218536580738453552, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+  m_PrefabInstance: {fileID: 858346355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfb0e9ee1454894495264d0aeb9da59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &774527919
 GameObject:
   m_ObjectHideFlags: 0
