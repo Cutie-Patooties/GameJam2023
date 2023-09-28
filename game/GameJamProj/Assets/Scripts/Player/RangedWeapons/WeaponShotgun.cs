@@ -9,12 +9,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Define shotgun class
-public class Shotgun : Weapon
+public class WeaponShotgun : RangedWeapon
 {
 
     protected float m_shotgunSpreadAngleRadians = 0.0f;
 
-    public Shotgun(
+    public WeaponShotgun(
         string name,
         Color textColor,
         Sprite icon,

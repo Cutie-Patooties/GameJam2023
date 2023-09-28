@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Define weapon class
-public class Weapon : ScriptableObject
+public class RangedWeapon : ScriptableObject
 {
 
     /* Bullet prefab */
@@ -31,7 +31,7 @@ public class Weapon : ScriptableObject
 
     private float m_currCooldown = 0.0f;
 
-    public Weapon(
+    public RangedWeapon(
         string name,
         Color textColor,
         Sprite icon,

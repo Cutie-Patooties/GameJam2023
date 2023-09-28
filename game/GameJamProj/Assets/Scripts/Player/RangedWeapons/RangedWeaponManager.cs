@@ -31,14 +31,14 @@ public class RangedWeaponManager : MonoBehaviour
     private Camera playerCamera = null;
 
     //[System.NonSerialized]
-    private List<Weapon> m_weapons = null;
+    private List<RangedWeapon> m_weapons = null;
 
     private int activeWeapon = 0;
 
     private void Awake()
     {
         // Instantiate the weapons list
-        m_weapons = new List<Weapon>();
+        m_weapons = new List<RangedWeapon>();
     }
 
     // Start is called before the first frame update
@@ -51,14 +51,15 @@ public class RangedWeaponManager : MonoBehaviour
         // Set playerCamera to the main camera
         playerCamera = Camera.main;
 
+        // Do not add weapons this way, deprecated
         // Ray gun                 name       text color   sprite            cooldwn dmg spd  alive  bulletObject
         //m_weapons.Add(new Weapon("Ray Gun", Color.white, defaultWeaponSprite, 0.5f, 1, 5.0f, 5.0f, projectileObject));
         // Shotgun                  name       text color sprite      cooldwn dmg spd  alive  bulletObject      spreadOffset
         //m_weapons.Add(new Shotgun("Shotgun", Color.red, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
-        /* Add weapons player should start with here */
-        AddWeapon(new Weapon("Ray Gun", Color.white, defaultWeaponSprite, 0.5f, 1, 5.0f, 5.0f, projectileObject));
-        AddWeapon(new Shotgun("Shotgun", Color.green, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
+        /* Add weapons player should start with here (ignore warnings) */
+        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 0.5f, 1, 5.0f, 5.0f, projectileObject));
+        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
     }
 
@@ -129,7 +130,7 @@ public class RangedWeaponManager : MonoBehaviour
     /// <param name="weapon">The weapon to add</param>
     /// <param name="overrideIfAlreadyExists">True - If the weapon already exists in the list, override it\nFalse: If the weapon already exists in the list, do nothing</param>
     /// <returns>true if added new weapon, false if weapon already existed in list (will still return false even if overrideIfAlreadyExists is true)</returns>
-    public bool AddWeapon(Weapon weapon, bool overrideIfAlreadyExists = true)
+    public bool AddWeapon(RangedWeapon weapon, bool overrideIfAlreadyExists = true)
     {
 
         // Link UI bar to weapon
