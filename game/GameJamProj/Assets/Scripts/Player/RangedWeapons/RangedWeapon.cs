@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Define weapon class
-public class RangedWeapon : ScriptableObject
+public class RangedWeapon : Object
 {
 
     /* Bullet prefab */
