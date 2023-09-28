@@ -21,21 +21,15 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float offsetX = 0.0f;
     [SerializeField] private float offsetY = 0.0f;
 
-    // Transform component
-    private Transform transform = null;
-
     // Start function
     void Start()
     {
-        transform = GetComponent<Transform>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        // Guard in case transform component cannot be found
-        if (transform == null) return;
 
         // Calculate the size of 1 quadrant of the coordinate plane
         Vector2 quadrantSize = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);

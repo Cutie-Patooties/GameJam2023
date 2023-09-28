@@ -14,7 +14,7 @@ public class ProjectileAttackScript : MonoBehaviour
 
     [SerializeField] private GameObject blastEffect;
 
-    [SerializeField] private float maxAliveTime = 5.0f;
+    public float maxAliveTime = 5.0f;
 
     // Keep track of time object has existed for
     private float aliveTime = 0.0f;

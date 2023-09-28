@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject projectileObject;
     public float shootDelay = 0.1f;
     public float projectileSpeed = 1;
-    private int damageIncrease = 0;
+    public int damageIncrease = 0;
     private Camera playerCamera;
     private EnemyProximityCheck enemyCheck;
 
@@ -76,7 +76,7 @@ public class PlayerAttack : MonoBehaviour
         damageIncrease += enemyCheck.numberOfEnemies;
 
         // Logic for shooting Projectile
-        if (Input.GetButton("Shoot") && canAttack)
+        /*if (Input.GetButton("Shoot") && canAttack)
         {
             canAttack = false;
 
@@ -90,7 +90,7 @@ public class PlayerAttack : MonoBehaviour
             projectile.GetComponent<ProjectileAttackScript>().damage += damageIncrease;
 
             StartCoroutine(EnableProjectile());
-        }
+        }*/
 
         // Logic for increasing the super meter by a certain rate
         if (currentEnergy < 100)
