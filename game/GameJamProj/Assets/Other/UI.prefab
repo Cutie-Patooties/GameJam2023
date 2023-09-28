@@ -1976,7 +1976,7 @@ GameObject:
   - component: {fileID: 4285972947649089266}
   - component: {fileID: 4279434592883754305}
   m_Layer: 5
-  m_Name: StaminaInfo
+  m_Name: WeaponCooldownInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2032,14 +2032,14 @@ MonoBehaviour:
   barObject: {fileID: 1371598901250961083}
   textObject: {fileID: 6498777404313780259}
   barMaxSize: 400
-  barChangeSpeed: 10
+  barChangeSpeed: 0
   maxBarValue: 100
   currentBarValue: 100
   enforceBarBounds: 1
-  enforceTextBounds: 0
+  enforceTextBounds: 1
   centeredBar: 0
-  displayAsPercentage: 1
-  formatAsTime: 0
+  displayAsPercentage: 0
+  formatAsTime: 1
 --- !u!1 &7815257535526996623
 GameObject:
   m_ObjectHideFlags: 0

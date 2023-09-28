@@ -19,14 +19,18 @@ public class GenericBar : MonoBehaviour
     [SerializeField] private GameObject textObject = null;
 
     /* Control bar attributes */
+    [Header("Bar Attributes")]
     [SerializeField] private float barMaxSize = 400.0f;
+    [Tooltip("How quick to animate the change speed (set to anything less than 0 to disable)")]
     [SerializeField] private float barChangeSpeed = 10.0f;
 
     /* Bar display info */
+    [Header("Default Bar Values")]
     [SerializeField] private float maxBarValue = 100.0f;
     [SerializeField] private float currentBarValue = 0.0f;
 
     /* More options */
+    [Header("Additional Options")]
     [SerializeField] private bool enforceBarBounds = true;
     [SerializeField] private bool enforceTextBounds = false;
     [SerializeField] private bool centeredBar = false;
@@ -58,10 +62,10 @@ public class GenericBar : MonoBehaviour
     {
 
         // Modify bar size
-        UpdateBar(currentBarValue, maxBarValue);
+        UpdateBar();
 
         // Update bar text
-        UpdateText(currentBarValue, maxBarValue);
+        UpdateText();
 
     }
 
@@ -85,24 +89,27 @@ public class GenericBar : MonoBehaviour
         SetBarValue(newValue, maxBarValue);
     }
 
-    private void UpdateBar(float currVal, float maxVal)
+    private void UpdateBar()
     {
 
         // Check if we should enforce bar bounds
-        if (enforceBarBounds && currVal > maxVal)
-            currVal = maxBarValue;
-        if (enforceBarBounds && currVal < 0)
-            currVal = 0;
+        if (enforceBarBounds && currentBarValue > maxBarValue)
+            currentBarValue = maxBarValue;
+        if (enforceBarBounds && currentBarValue < 0)
+            currentBarValue = 0;
 
         // Guard against missing bar transform component
         if (m_barTransform == null) return;
 
         // Modify bar size
         m_barTransform.localScale = new Vector3(
-            Mathf.Lerp(
-                m_barTransform.localScale.x,
-                (currVal / maxVal) * barMaxSize,
-                Time.deltaTime * barChangeSpeed
+            (barChangeSpeed > 0.0f ? 
+                Mathf.Lerp(
+                    m_barTransform.localScale.x,
+                    (currentBarValue / maxBarValue) * barMaxSize,
+                    Time.deltaTime * barChangeSpeed
+                ) :
+                (currentBarValue / maxBarValue) * barMaxSize
             ),
             m_barTransform.localScale.y,
             m_barTransform.localScale.z
@@ -121,14 +128,14 @@ public class GenericBar : MonoBehaviour
 
     }
 
-    private void UpdateText(float currVal, float maxVal)
+    private void UpdateText()
     {
 
         // Check if we should enforce text bounds
-        if (enforceTextBounds && currVal > maxVal)
-            currVal = maxBarValue;
-        if (enforceTextBounds && currVal < 0)
-            currVal = 0;
+        if (enforceTextBounds && currentBarValue > maxBarValue)
+            currentBarValue = maxBarValue;
+        if (enforceTextBounds && currentBarValue < 0)
+            currentBarValue = 0;
 
         // Guard against no bar text
         if (m_barText == null) return;
@@ -136,17 +143,17 @@ public class GenericBar : MonoBehaviour
         // Display bar
         if(displayAsPercentage)
         {
-            m_barText.text = ((currVal / maxVal) * 100).ToString() + "%";
+            m_barText.text = Mathf.Round((currentBarValue / maxBarValue) * 100).ToString() + "%";
         }
         else if(formatAsTime)
         {
             m_barText.text = 
-                ((int)currVal / 60).ToString("00") + 
-                ":" + 
-                ((int)currVal % 60).ToString("00") + 
-                (currVal % 1).ToString(".000");
+                ((int)maxBarValue / 60 != 0 ? ((int)currentBarValue / 60).ToString("00") + ":" : "") + 
+                ((int)currentBarValue % 60).ToString("00") + 
+                (currentBarValue % 1).ToString(".000") + 
+                ((int)maxBarValue / 60 == 0 ? " sec(s)" : "");
         }
-        else m_barText.text = currVal.ToString() + " / " + maxVal.ToString();
+        else m_barText.text = currentBarValue.ToString() + " / " + maxBarValue.ToString();
 
     }
 
