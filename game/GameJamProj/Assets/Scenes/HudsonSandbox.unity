@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: WeaponIconObject
       value: 
       objectReference: {fileID: 1005654200}
+    - target: {fileID: 6705071362936383587, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      propertyPath: weaponCooldownBar
+      value: 
+      objectReference: {fileID: 1255076588}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5863,6 +5867,11 @@ Tilemap:
 --- !u!1 &1005654200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5516612264621722093, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+  m_PrefabInstance: {fileID: 769694252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1255076588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7775602371059470146, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
   m_PrefabInstance: {fileID: 769694252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1779901655
