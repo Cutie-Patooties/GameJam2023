@@ -45,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         // Logic for performing Attack
-        if (Input.GetButtonDown("Attack") && canAttack)
+        if (Input.GetButtonDown("Attack - Mouse") && canAttack)
         {
             canAttack = false;
 
@@ -54,6 +54,17 @@ public class PlayerAttack : MonoBehaviour
             mousePosition.z = -playerCamera.transform.position.z;
             Vector2 worldMousePosition = playerCamera.ScreenToWorldPoint(mousePosition);
             Vector2 hitboxOffsetPosition = (worldMousePosition - (Vector2)transform.position).normalized * hitboxOffset;
+            attackHitbox.transform.position = (Vector2)transform.position + hitboxOffsetPosition;
+
+            attackHitbox.SetActive(true);
+            StartCoroutine(EnableAttack());
+        }
+        if (Input.GetButtonDown("Attack - Shift") && canAttack)
+        {
+            canAttack = false;
+
+            // Correctly places hitbox for melee attack
+            Vector2 hitboxOffsetPosition = playerController.lastMovementDirection * hitboxOffset;
             attackHitbox.transform.position = (Vector2)transform.position + hitboxOffsetPosition;
 
             attackHitbox.SetActive(true);

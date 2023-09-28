@@ -172,9 +172,11 @@ MonoBehaviour:
   - {fileID: 553162470}
   - {fileID: 1031015721}
   - {fileID: 1999639020}
+  miniBoss: {fileID: 1600574405214284115, guid: 2d4e18e0f75181b498d565ad3a89283e, type: 3}
   waveText: {fileID: 217930229}
   waveTimer: {fileID: 579597999}
-  ended: 0
+  bossAppeared: 0
+  hasEnded: 0
 --- !u!4 &362970592
 Transform:
   m_ObjectHideFlags: 0
@@ -334,7 +336,7 @@ MonoBehaviour:
   xRange: 14
   yRange: 0
   spawnRate: 1
-  spawnInterval: 2
+  spawnInterval: 3
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
@@ -348,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 553162469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.4, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -650,7 +652,7 @@ MonoBehaviour:
   xRange: 0
   yRange: 8
   spawnRate: 1
-  spawnInterval: 2
+  spawnInterval: 3
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
@@ -664,7 +666,7 @@ Transform:
   m_GameObject: {fileID: 1031015720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.3, y: 0, z: 0}
+  m_LocalPosition: {x: -16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -702,7 +704,7 @@ MonoBehaviour:
   xRange: 14
   yRange: 0
   spawnRate: 1
-  spawnInterval: 2
+  spawnInterval: 3
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
@@ -716,7 +718,7 @@ Transform:
   m_GameObject: {fileID: 1211715622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.4, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -996,7 +998,7 @@ MonoBehaviour:
   xRange: 0
   yRange: 8
   spawnRate: 1
-  spawnInterval: 2
+  spawnInterval: 3
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
@@ -1010,7 +1012,7 @@ Transform:
   m_GameObject: {fileID: 1999639019}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.3, y: 0, z: 0}
+  m_LocalPosition: {x: 16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

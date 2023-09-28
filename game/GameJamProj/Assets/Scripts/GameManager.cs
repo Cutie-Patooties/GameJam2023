@@ -24,10 +24,13 @@ public class GameManager : MonoBehaviour
 
     // Other variables needed
     [SerializeField] private EnemySpawner[] enemySpawners;
+    [SerializeField] private GameObject miniBoss;
     [SerializeField] private TextMeshProUGUI waveText;
     [SerializeField] private GenericBar waveTimer;
     private float timer = 0.0f;
-    public bool ended = false;
+    private bool isDead = false;
+    public bool bossAppeared = false;
+    public bool hasEnded = false;
 
     void Start()
     {
@@ -50,35 +53,53 @@ public class GameManager : MonoBehaviour
             playerAttack.enabled = false;
             enemyProximityCheck.enabled = false;
 
-            ended = true;
+            isDead = true;
             Debug.Log("Player has died... " + "FINAL SCORE: " + score);
         }
 
         // If player is still alive, continue adding to score
-        if(!ended)
+        if(!isDead)
         {
             score += (scoreRate * (enemyProximityCheck.numberOfEnemies + 1)) * Time.deltaTime;
 
-            if (timer <= 0.0f)
+            if (timer <= 0.0f) // After a certain amount of time passes, spawn miniboss
             {
                 timer = 0.0f;
-                wave++;
-                StartCoroutine(PrepareNextWave());
-                waveText.text = "WAVE " + wave;
+                if(!bossAppeared)
+                    SpawnMiniBoss();
             }
             else
             {
                 timer -= Time.deltaTime;
             }
+
             waveTimer.SetBarValue(timer, waveDuration);
         }
     }
 
+    private void SpawnMiniBoss()
+    {
+        EnemySpawner randomSpawner = enemySpawners[Random.Range(0, enemySpawners.Length)];
+        float xPosition = Random.Range(-randomSpawner.xRange, randomSpawner.xRange);
+        float yPosition = Random.Range(-randomSpawner.yRange, randomSpawner.yRange);
+        Vector2 spawnPosition = new(xPosition, yPosition);
+
+        Instantiate(miniBoss, spawnPosition, Quaternion.identity);
+        bossAppeared = true;
+    }
+
+    public void PrepareNextWave()
+    {
+        StartCoroutine(StartNextWave());
+    }
+
     // Prepare next wave by pausing enemy spawners and giving player some health
     // If a certain number of waves pass, increase spawn rate of enemies
-    IEnumerator PrepareNextWave()
+    IEnumerator StartNextWave()
     {
-        ended = true;
+        hasEnded = true;
+        wave++;
+        waveText.text = "WAVE " + wave;
 
         if (wave % 5 == 0)
         {
@@ -102,6 +123,6 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(enemySpawners[0].startTime);
 
-        ended = false;
+        hasEnded = false;
     }
 }

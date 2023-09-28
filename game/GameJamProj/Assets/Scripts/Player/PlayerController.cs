@@ -14,9 +14,8 @@ public class PlayerController : MonoBehaviour
 
     // Variables needed for Movement
     public float movementSpeed = 1f;
-    private Vector2 lastMovementDirection;
+    public Vector2 lastMovementDirection;
     private Rigidbody2D playerRigidBody;
-    [SerializeField] private GameObject attackHitbox;
 
     // Receive and Set all Necessary Components
     private void Awake()
@@ -27,19 +26,15 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Logic for implementing Movement
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+
         Vector2 movementInput = new(horizontalInput, verticalInput);
         playerRigidBody.velocity = movementSpeed * movementInput;
+
         if (movementInput != Vector2.zero)
             lastMovementDirection = movementInput.normalized;
-
-        // This is for properly positioning the hitbox
-        /* if (movementInput != Vector2.zero)
-        {
-            Vector2 hitboxOffset = lastMovementDirection * 1.25f;
-            attackHitbox.transform.position = (Vector2)transform.position + hitboxOffset;
-        } */ // Keep this part of code just in case
     }
 
     private void OnDisable()

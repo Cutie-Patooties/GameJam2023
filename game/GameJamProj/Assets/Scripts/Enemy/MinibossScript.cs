@@ -1,23 +1,32 @@
 /**
  * Author: Alan
  * Contributors: N/A
- * Description: This script makes enemies chase down the player
+ * Description: This script handles the behavior of the mini boss
 **/
 
 using System.Collections;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class MinibossScript : MonoBehaviour
 {
     // Variables needed for this script
 
+    // Miniboss chases player slowly, killing miniboss kills all remaining enemies
     public float movementSpeed;
     public float maxHealth;
+    [SerializeField] private GameObject minibossKillEffect;
 
+    // Miniboss hurts player same way regular enemies do
     public float attackCooldown;
     public float attackDamage;
     private bool canAttack;
 
+    // Miniboss can shoot a large, slow moving projectile
+    public float projectileCooldown;
+    public float projectileSpeed;
+    [SerializeField] private GameObject minibossProjectile;
+
+    // Other variables needed
     private Rigidbody2D enemyrb;
     private GameObject player;
     private GameManager game;
@@ -27,7 +36,9 @@ public class EnemyController : MonoBehaviour
         enemyrb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("EntityPlayer");
         game = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         canAttack = true;
+        InvokeRepeating(nameof(LaunchProjectile), projectileCooldown, projectileCooldown);
     }
 
     private void Update()
@@ -37,8 +48,23 @@ public class EnemyController : MonoBehaviour
         enemyrb.velocity = direction * movementSpeed;
 
         // Enemy dies when health reaches zero or wave ends
-        if (maxHealth <= 0 || game.hasEnded)
+        if (maxHealth <= 0)
+        {
+            Instantiate(minibossKillEffect, gameObject.transform.position, Quaternion.identity);
+            game.PrepareNextWave();
+            game.bossAppeared = false;
             Destroy(gameObject);
+        }
+    }
+
+    private void LaunchProjectile()
+    {
+        GameObject projectile = Instantiate(minibossProjectile, transform.position, Quaternion.identity);
+
+        // Correctly get direction projectile will travel at
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        projectile.GetComponent<Rigidbody2D>().velocity = direction;
+        projectile.GetComponent<Rigidbody2D>().velocity = projectile.GetComponent<Rigidbody2D>().velocity.normalized * projectileSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
