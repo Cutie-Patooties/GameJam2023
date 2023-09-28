@@ -37,7 +37,12 @@ public class EnemyController : MonoBehaviour
         enemyrb.velocity = direction * movementSpeed;
 
         // Enemy dies when health reaches zero or wave ends
-        if (maxHealth <= 0 || game.hasEnded)
+        if (maxHealth <= 0)
+        {
+            game.score += 10;
+            Destroy(gameObject);
+        }
+        else if (game.hasEnded)
             Destroy(gameObject);
     }
 

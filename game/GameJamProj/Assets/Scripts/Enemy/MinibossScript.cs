@@ -53,6 +53,7 @@ public class MinibossScript : MonoBehaviour
             Instantiate(minibossKillEffect, gameObject.transform.position, Quaternion.identity);
             game.PrepareNextWave();
             game.bossAppeared = false;
+            game.score += 1000;
             Destroy(gameObject);
         }
     }

@@ -102,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
         superMeter.SetBarValue(Mathf.Round(currentEnergy));
 
         // Logic for performing a super attack
-        if (Input.GetButtonDown("Super") && canAttack && canUnleashUltimateDestruction)
+        if (Input.GetButtonDown("Super") && canUnleashUltimateDestruction)
         {
             canAttack = false;
             canUnleashUltimateDestruction = false;
@@ -118,8 +118,9 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator EnableAttack()
     {
-        yield return new WaitForSeconds(attackDelay);
+        yield return new WaitForSeconds(0.1f);
         attackHitbox.SetActive(false);
+        yield return new WaitForSeconds(attackDelay);
         canAttack = true;
     }
 

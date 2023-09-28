@@ -11,6 +11,7 @@ public class MeleeAttackScript : MonoBehaviour
     // Variables needed for this script
     [SerializeField] private ParticleSystem killEffect;
     [SerializeField] private float shakeIntensity;
+    [SerializeField] private float minibossDamage;
 
     // This will kill an enemy upon hitting them
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,6 +21,13 @@ public class MeleeAttackScript : MonoBehaviour
             Destroy(other.gameObject);
             killEffect.Play();
             Camera.main.GetComponent<CameraShake>().Shake(0.1f, shakeIntensity);
+        }
+
+        if (other.CompareTag("Miniboss"))
+        {
+            other.GetComponent<MinibossScript>().maxHealth -= minibossDamage;
+            killEffect.Play();
+            Camera.main.GetComponent<CameraShake>().Shake(0.1f, shakeIntensity + 0.1f);
         }
     }
 }

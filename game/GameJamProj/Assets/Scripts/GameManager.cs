@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     public float score = 0;
     public float scoreRate = 10.0f;
 
+    private readonly int waveDifficultyIncreaseInterval = 3; // For every # waves, difficulty increases
+    private readonly int wavePlayerHealthRecovery = 50; // How much health player recovers at the start of new wave
+    private readonly float waveDurationTimeIncrease = 5.0f; // How much longer a wave lasts when difficulty increases
+
+
     // Other variables needed
     [SerializeField] private EnemySpawner[] enemySpawners;
     [SerializeField] private GameObject miniBoss;
@@ -49,18 +54,19 @@ public class GameManager : MonoBehaviour
         if(playerController.currentHealth <= 0)
         {
             playerController.currentHealth = 0;
+
             playerController.enabled = false;
             playerAttack.enabled = false;
             enemyProximityCheck.enabled = false;
 
             isDead = true;
-            Debug.Log("Player has died... " + "FINAL SCORE: " + score);
         }
 
         // If player is still alive, continue adding to score
         if(!isDead)
         {
-            score += (scoreRate * (enemyProximityCheck.numberOfEnemies + 1)) * Time.deltaTime;
+            score += ((scoreRate * (enemyProximityCheck.numberOfEnemies + 1)) + wave) * Time.deltaTime;
+            Debug.Log("SCORE: " + Mathf.Round(score));
 
             if (timer <= 0.0f) // After a certain amount of time passes, spawn miniboss
             {
@@ -80,8 +86,8 @@ public class GameManager : MonoBehaviour
     private void SpawnMiniBoss()
     {
         EnemySpawner randomSpawner = enemySpawners[Random.Range(0, enemySpawners.Length)];
-        float xPosition = Random.Range(-randomSpawner.xRange, randomSpawner.xRange);
-        float yPosition = Random.Range(-randomSpawner.yRange, randomSpawner.yRange);
+        float xPosition = randomSpawner.xTransformPosition + Random.Range(-randomSpawner.xRange, randomSpawner.xRange);
+        float yPosition = randomSpawner.yTransformPosition + Random.Range(-randomSpawner.yRange, randomSpawner.yRange);
         Vector2 spawnPosition = new(xPosition, yPosition);
 
         Instantiate(miniBoss, spawnPosition, Quaternion.identity);
@@ -101,13 +107,14 @@ public class GameManager : MonoBehaviour
         wave++;
         waveText.text = "WAVE " + wave;
 
-        if (wave % 5 == 0)
+        if (wave % waveDifficultyIncreaseInterval == 0)
         {
             foreach (EnemySpawner enemySpawner in enemySpawners)
             {
                 enemySpawner.spawnRate++;
+                enemySpawner.spawnInterval++;
             }
-            waveDuration += 5.0f;
+            waveDuration += waveDurationTimeIncrease;
         }
         timer = waveDuration;
 
@@ -117,7 +124,7 @@ public class GameManager : MonoBehaviour
             enemySpawner.InvokeRepeating("SpawnEnemies", enemySpawner.startTime, enemySpawner.spawnInterval);
         }
 
-        playerController.currentHealth += 50;
+        playerController.currentHealth += wavePlayerHealthRecovery;
         if (playerController.currentHealth > playerController.maxHealth)
             playerController.currentHealth = playerController.maxHealth;
 

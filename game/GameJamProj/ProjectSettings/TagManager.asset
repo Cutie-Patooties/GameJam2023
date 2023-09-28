@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Proximity
   - Miniboss
+  - OutOfBounds
   layers:
   - Default
   - TransparentFX

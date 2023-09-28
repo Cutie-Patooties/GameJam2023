@@ -11,6 +11,7 @@ public class SuperAttackScript : MonoBehaviour
     // Variables needed for this script
     [SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private float shakeIntensity;
+    [SerializeField] private float minibossDamage;
 
     // This will kill all enemies upon hitting them
     private void OnTriggerEnter2D(Collider2D other)
@@ -18,6 +19,10 @@ public class SuperAttackScript : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Miniboss"))
+        {
+            other.GetComponent<MinibossScript>().maxHealth -= minibossDamage;
         }
     }
 
