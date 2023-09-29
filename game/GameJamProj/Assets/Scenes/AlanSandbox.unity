@@ -858,6 +858,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+--- !u!1 &858346356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7775602371059470146, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+  m_PrefabInstance: {fileID: 858346355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &858346357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5516612264621722093, guid: 55943a924799bdd45a4cae566bc5f776, type: 3}
+  m_PrefabInstance: {fileID: 858346355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1031015720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1413,14 @@ PrefabInstance:
       propertyPath: superMeter
       value: 
       objectReference: {fileID: 1841486221}
+    - target: {fileID: 6705071362936383587, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      propertyPath: weaponIconObject
+      value: 
+      objectReference: {fileID: 858346357}
+    - target: {fileID: 6705071362936383587, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      propertyPath: weaponCooldownBar
+      value: 
+      objectReference: {fileID: 858346356}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
