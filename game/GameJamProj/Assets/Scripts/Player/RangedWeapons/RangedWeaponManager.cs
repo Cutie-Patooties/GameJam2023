@@ -109,7 +109,7 @@ public class RangedWeaponManager : MonoBehaviour
             Vector2 dir = (playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;
 
             // Attempt to shoot weapon and store if successful
-            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease);
+            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease, null);
 
             if (shotFired)
             {

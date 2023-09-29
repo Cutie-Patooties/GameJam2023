@@ -80,7 +80,7 @@ public class RangedWeapon : Object
     /// <param name="spawnPos">player location (transform.position)</param>
     /// <param name="direction">direction to shoot ((playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;)</param>
     /// <returns>Whether or not player is able to shoot</returns>
-    public virtual bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease)
+    public virtual bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease, AudioClip sound)
     {
 
         // Check if we can shoot
@@ -101,6 +101,7 @@ public class RangedWeapon : Object
             projectile.GetComponent<ProjectileAttackScript>().maxAliveTime = m_bulletAliveTime;
 
             // TODO: play shoot sound
+            
 
             return true;
 

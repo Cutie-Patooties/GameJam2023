@@ -30,7 +30,7 @@ public class WeaponShotgun : RangedWeapon
         m_shotgunSpreadAngleRadians = shotgunSpreadAngleRadians;
     }
 
-    public override bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease)
+    public override bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease, AudioClip sound)
     {
         // Check if we can shoot
         if (CanShoot())
@@ -45,6 +45,7 @@ public class WeaponShotgun : RangedWeapon
             SpawnProjectile(player, spawnPos, direction, damageIncrease, -m_shotgunSpreadAngleRadians);     // Right
 
             // TODO: play shoot sound
+
 
             return true;
 
