@@ -184,6 +184,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1005654200}
     - target: {fileID: 6705071362936383587, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
+      propertyPath: weaponIconObject
+      value: 
+      objectReference: {fileID: 1005654200}
+    - target: {fileID: 6705071362936383587, guid: 01d9cdc3d5072134ca25fa566bd2ce07, type: 3}
       propertyPath: weaponCooldownBar
       value: 
       objectReference: {fileID: 1255076588}

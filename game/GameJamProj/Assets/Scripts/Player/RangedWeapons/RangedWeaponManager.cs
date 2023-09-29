@@ -9,11 +9,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAttack))]
 public class RangedWeaponManager : MonoBehaviour
 {
 
     [Header("Required Game Objects")]
-    [SerializeField] private GameObject WeaponIconObject = null;
+    [SerializeField] private GameObject weaponIconObject = null;
     [SerializeField] private GameObject projectileObject = null;
     [SerializeField] private GameObject weaponCooldownBar = null;
 
@@ -74,10 +75,10 @@ public class RangedWeaponManager : MonoBehaviour
             // technically unnessesary but useful if player receives multiple weapons at once when having none
             activeWeapon = 0;
             // Update weapon icon
-            WeaponIconObject.GetComponent<SpriteRenderer>().sprite = noWeaponSprite;
+            weaponIconObject.GetComponent<SpriteRenderer>().sprite = noWeaponSprite;
             // Update weapon name text and text color
-            WeaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = "Unarmed";
-            WeaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = Color.white;
+            weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = "Unarmed";
+            weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = Color.white;
 
             return;
 
@@ -96,10 +97,10 @@ public class RangedWeaponManager : MonoBehaviour
             activeWeapon = 0;
 
         // Update weapon icon
-        WeaponIconObject.GetComponent<SpriteRenderer>().sprite = m_weapons[activeWeapon].GetSprite();
+        weaponIconObject.GetComponent<SpriteRenderer>().sprite = m_weapons[activeWeapon].GetSprite();
         // Update weapon name text and text color
-        WeaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = m_weapons[activeWeapon].GetWeaponName();
-        WeaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = m_weapons[activeWeapon].GetTextColor();
+        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = m_weapons[activeWeapon].GetWeaponName();
+        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = m_weapons[activeWeapon].GetTextColor();
 
         // Update all weapons
         for(int i = 0; i < m_weapons.Count; ++i)
