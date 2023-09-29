@@ -16,6 +16,7 @@ public class SplashScreenManager : MonoBehaviour
 {
 
     [SerializeField] private string mainMenuScene = "MainMenu";
+    [SerializeField] private GameObject flashObject = null;
 
     [Header("Logo Sprites")]
     [SerializeField] private Sprite defualtLogo = null;
@@ -24,7 +25,6 @@ public class SplashScreenManager : MonoBehaviour
     [Header("Additional Settings")]
     [SerializeField] private float timeTillSwitchScene = 4.0f;
     [SerializeField] private float fadeTime = 0.25f;
-    [SerializeField] private bool fadeOut = true;
 
     private bool switchedLogos = false;
 
@@ -56,7 +56,7 @@ public class SplashScreenManager : MonoBehaviour
         if (timeElapsed < 0.5f) return;
 
         // Fade in logo
-        if(GetComponent<SpriteRenderer>().color.a < 255.0f)
+        if (GetComponent<SpriteRenderer>().color.a < 1.0f)
         {
             GetComponent<SpriteRenderer>().color = new Color(
                 255, 
@@ -73,6 +73,9 @@ public class SplashScreenManager : MonoBehaviour
             // Prevent from running again
             switchedLogos = true;
 
+            // Screen flash
+            flashObject.GetComponent<ScreenFlash>().enableFlash = true;
+
             // Set new logo
             GetComponent<SpriteRenderer>().sprite = alternateLogo;
 
@@ -80,7 +83,9 @@ public class SplashScreenManager : MonoBehaviour
             GetComponent<AudioSource>().Play();
 
         }
-        else if (timeElapsed >= timeTillSwitchScene)
+
+        // Check if we should switch scenes
+        if (timeElapsed >= timeTillSwitchScene)
         {
             SceneManager.LoadScene(mainMenuScene);
         }

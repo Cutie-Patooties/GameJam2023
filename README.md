@@ -3,7 +3,7 @@
 
 Our team:
 - Project Manager & Assistant Programmer: Hudson
-- Game Design Director & Assistant Programmer: Alan
-- Technical Director: Kevin
-- Sound Engineer & Assistant Game Design: Ben
+- Technical Director: Alan
+- Game Design Director & Sound Engineer: Ben
 - Art Director: Maddy
+- Assistant Programmer: Kevin
