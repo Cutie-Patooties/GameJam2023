@@ -28,6 +28,7 @@ public class RangedWeapon : Object
     protected float m_shotCooldown = 1.0f;
 
     protected int m_damagePerRound = 1;
+    protected int m_weaponTier = 0;
 
     private float m_currCooldown = 0.0f;
 
@@ -35,6 +36,7 @@ public class RangedWeapon : Object
         string name,
         Color textColor,
         Sprite icon,
+        int tier,
         float shotCooldown,
         int damagePerRound,
         float projectileSpeed,
@@ -45,6 +47,7 @@ public class RangedWeapon : Object
         m_name = name;
         m_textColor = textColor;
         m_icon = icon;
+        m_weaponTier = tier;
         m_shotCooldown = shotCooldown;
         m_damagePerRound = damagePerRound;
         m_projectileSpeed = projectileSpeed;
@@ -144,6 +147,11 @@ public class RangedWeapon : Object
     public Color GetTextColor()
     {
         return m_textColor;
+    }
+
+    public int GetTier()
+    {
+        return m_weaponTier;
     }
 
 }
