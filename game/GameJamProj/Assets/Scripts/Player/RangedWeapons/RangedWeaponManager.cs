@@ -59,8 +59,8 @@ public class RangedWeaponManager : MonoBehaviour
         //m_weapons.Add(new Shotgun("Shotgun", Color.red, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
         /* Add weapons player should start with here (ignore warnings) */
-        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 1, 0.5f, 1, 5.0f, 5.0f, projectileObject));
-        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
+        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 1, 0.5f, 1, 15.0f, 3.0f, projectileObject));
+        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1, 1.5f, 3, 10.0f, 0.35f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
     }
 
@@ -172,7 +172,7 @@ public class RangedWeaponManager : MonoBehaviour
         for(int i = 0; i < m_weapons.Count; ++i)
         {
             // If we find a weapon with the same name (case-insensitive) delete it
-            if (m_weapons[i].GetWeaponName().ToLower().Equals(weaponName))
+            if (m_weapons[i].GetWeaponName().ToLower().Equals(weaponName.ToLower()))
             {
                 m_weapons.RemoveAt(i);
                 return true;
