@@ -10,7 +10,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     // Variables needed for this script
-    private bool canAttack;
+    [System.NonSerialized] public bool canAttack;
     private PlayerController playerController;
 
     // Variables needed for Attacking

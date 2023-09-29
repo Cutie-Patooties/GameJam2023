@@ -74,11 +74,9 @@ public class RangedWeaponManager : MonoBehaviour
 
             // technically unnessesary but useful if player receives multiple weapons at once when having none
             activeWeapon = 0;
-            // Update weapon icon
-            weaponIconObject.GetComponent<SpriteRenderer>().sprite = noWeaponSprite;
-            // Update weapon name text and text color
-            weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = "Unarmed";
-            weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = Color.white;
+
+            // Update UI
+            UpdateWeaponUI(noWeaponSprite, "Unarmed", -1, Color.white);
 
             return;
 
@@ -96,18 +94,15 @@ public class RangedWeaponManager : MonoBehaviour
         else if (activeWeapon < 0)
             activeWeapon = 0;
 
-        // Update weapon icon
-        weaponIconObject.GetComponent<SpriteRenderer>().sprite = m_weapons[activeWeapon].GetSprite();
-        // Update weapon name text and text color
-        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = m_weapons[activeWeapon].GetWeaponName();
-        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = m_weapons[activeWeapon].GetTextColor();
+        // Update UI
+        UpdateWeaponUI(m_weapons[activeWeapon].GetSprite(), m_weapons[activeWeapon].GetWeaponName(), m_weapons[activeWeapon].GetTier(), m_weapons[activeWeapon].GetTextColor());
 
         // Update all weapons
         for(int i = 0; i < m_weapons.Count; ++i)
             m_weapons[i]._Update(i == activeWeapon);
 
         // Check if player wants to shoot their gun
-        if (Input.GetButton("Shoot")/* && attackScript.canAttack*/)
+        if (Input.GetButton("Shoot") && attackScript.canAttack)
         {
 
             // Direction player wants to shoot
@@ -116,7 +111,12 @@ public class RangedWeaponManager : MonoBehaviour
             // Attempt to shoot weapon and store if successful
             bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease);
 
-            if (!shotFired)
+            if (shotFired)
+            {
+                attackScript.canAttack = false;
+                StartCoroutine(EnableProjectile());
+            }
+            else
             {
                 // TODO: play out of ammo sound
             }
@@ -144,6 +144,7 @@ public class RangedWeaponManager : MonoBehaviour
             // If the weapon with the same name (case-insensitive) is found either override it or do nothing depending on preferences
             if (m_weapons[i].GetWeaponName().ToLower().Equals(weapon.GetWeaponName().ToLower())) {
 
+                // Check if we should override and if our new weapon's tier is greater than the current weapon tier
                 if(overrideIfLowerTier && m_weapons[i].GetTier() < weapon.GetTier())
                     m_weapons[i] = weapon;
 
@@ -180,6 +181,25 @@ public class RangedWeaponManager : MonoBehaviour
 
         return false;
 
+    }
+
+    private void UpdateWeaponUI(Sprite icon, string weaponName, int tier, Color tierColor)
+    {
+        // Update weapon icon
+        weaponIconObject.GetComponent<SpriteRenderer>().sprite = icon;
+        // Update weapon name text and text color
+        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = weaponName;
+        if (tier == -1)
+            weaponIconObject.transform.Find("WeaponTier").GetComponent<TextMeshProUGUI>().text = "";
+        else
+            weaponIconObject.transform.Find("WeaponTier").GetComponent<TextMeshProUGUI>().text = "Tier " + tier;
+        weaponIconObject.transform.Find("WeaponTier").GetComponent<TextMeshProUGUI>().color = tierColor;
+    }
+
+    IEnumerator EnableProjectile()
+    {
+        yield return new WaitForSeconds(weaponCooldownBar.GetComponent<GenericBar>().GetMaxBarValue());
+        attackScript.canAttack = true;
     }
 
 }
