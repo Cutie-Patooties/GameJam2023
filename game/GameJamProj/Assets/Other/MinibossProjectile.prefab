@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3220241380738111436}
   - component: {fileID: 8591157358067087171}
   - component: {fileID: 8138842076920604770}
+  - component: {fileID: 7261665942015367856}
   m_Layer: 0
   m_Name: MinibossProjectile
   m_TagString: Projectile
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 17.34, y: 17.34, z: 17.34}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.74792814, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 1556605908, guid: 62f5f3da97654374c96a19a2aa817a70, type: 3}
+  m_Color: {r: 1, g: 0.3443396, b: 0.7803644, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,9 +120,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.011}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.07
 --- !u!50 &8591157358067087171
 Rigidbody2D:
   serializedVersion: 4
@@ -165,3 +166,24 @@ MonoBehaviour:
   isPlayer: 0
   blastEffect: {fileID: 4666450995212911901, guid: d874f61a521256d49bb86a4694f552e0, type: 3}
   maxAliveTime: 10
+--- !u!95 &7261665942015367856
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312258141836990282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7e4065f185f0a84a8e89d380eb5e4d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
