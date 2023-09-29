@@ -25,7 +25,7 @@ public class ScreenFlash : MonoBehaviour
     void Start()
     {
         // Set sprite opacity to zero
-        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+        GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 0);
     }
 
     // Update is called once per frame
@@ -37,15 +37,15 @@ public class ScreenFlash : MonoBehaviour
         if (!startedFlash)
         {
             startedFlash = true;
-            GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1.0f);
+            GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 1.0f);
         }
 
         currTime += Time.deltaTime;
 
         GetComponent<SpriteRenderer>().color = new Color(
             255, 
-            255,
-            255,
+            0,
+            0,
             Mathf.Lerp(GetComponent<SpriteRenderer>().color.a, 0.0f, Time.deltaTime * flashTime)
         );
 
