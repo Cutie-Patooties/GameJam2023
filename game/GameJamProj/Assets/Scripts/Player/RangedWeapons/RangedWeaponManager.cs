@@ -59,8 +59,8 @@ public class RangedWeaponManager : MonoBehaviour
         //m_weapons.Add(new Shotgun("Shotgun", Color.red, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
         /* Add weapons player should start with here (ignore warnings) */
-        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 0.5f, 1, 5.0f, 5.0f, projectileObject));
-        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
+        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 1, 0.5f, 1, 5.0f, 5.0f, projectileObject));
+        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
     }
 
@@ -107,7 +107,7 @@ public class RangedWeaponManager : MonoBehaviour
             m_weapons[i]._Update(i == activeWeapon);
 
         // Check if player wants to shoot their gun
-        if (Input.GetButton("Shoot"))
+        if (Input.GetButton("Shoot")/* && attackScript.canAttack*/)
         {
 
             // Direction player wants to shoot
@@ -129,9 +129,9 @@ public class RangedWeaponManager : MonoBehaviour
     /// Adds a weapon to the player's useable weapons. Checking for existing weapons is done via the weapon's name. The check for existing names is case-insensitive
     /// </summary>
     /// <param name="weapon">The weapon to add</param>
-    /// <param name="overrideIfAlreadyExists">True - If the weapon already exists in the list, override it\nFalse: If the weapon already exists in the list, do nothing</param>
+    /// <param name="overrideIfLowerTier">True - If the weapon already exists in the list, override it\nFalse: If the weapon already exists in the list, do nothing</param>
     /// <returns>true if added new weapon, false if weapon already existed in list (will still return false even if overrideIfAlreadyExists is true)</returns>
-    public bool AddWeapon(RangedWeapon weapon, bool overrideIfAlreadyExists = true)
+    public bool AddWeapon(RangedWeapon weapon, bool overrideIfLowerTier = true)
     {
 
         // Link UI bar to weapon
@@ -144,7 +144,7 @@ public class RangedWeaponManager : MonoBehaviour
             // If the weapon with the same name (case-insensitive) is found either override it or do nothing depending on preferences
             if (m_weapons[i].GetWeaponName().ToLower().Equals(weapon.GetWeaponName().ToLower())) {
 
-                if(overrideIfAlreadyExists)
+                if(overrideIfLowerTier && m_weapons[i].GetTier() < weapon.GetTier())
                     m_weapons[i] = weapon;
 
                 return false;

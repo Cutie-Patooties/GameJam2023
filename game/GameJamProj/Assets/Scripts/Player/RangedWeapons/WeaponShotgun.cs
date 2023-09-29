@@ -18,13 +18,14 @@ public class WeaponShotgun : RangedWeapon
         string name,
         Color textColor,
         Sprite icon,
+        int tier,
         float shotCooldown,
         int damagePerRound,
         float projectileSpeed,
         float bulletAliveTime,
         GameObject bulletPrefab,
         float shotgunSpreadAngleRadians
-    ) : base(name, textColor, icon, shotCooldown, damagePerRound, projectileSpeed, bulletAliveTime, bulletPrefab)
+    ) : base(name, textColor, icon, tier, shotCooldown, damagePerRound, projectileSpeed, bulletAliveTime, bulletPrefab)
     {
         m_shotgunSpreadAngleRadians = shotgunSpreadAngleRadians;
     }
