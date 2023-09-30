@@ -20,6 +20,7 @@ public class ButtonScript : MonoBehaviour
 
     [Header("Scene Switch Settings")]
     [SerializeField] private bool enableSwitchScene = false;
+    [SerializeField] private bool openExternalLinkInstead = false;
     [SerializeField] private string sceneName = "";
 
     [Header("Quit Button")]
@@ -38,6 +39,8 @@ public class ButtonScript : MonoBehaviour
         // Check if we want to switch scene
         if (enableSwitchScene)
             SceneManager.LoadScene(sceneName);
+        else if (openExternalLinkInstead)
+            Application.OpenURL(sceneName);
 
         // Check if we want to quit the game
         else if (enableQuitGame)
