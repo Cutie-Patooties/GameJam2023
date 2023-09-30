@@ -54,6 +54,7 @@ MonoBehaviour:
   barChangeSpeed: 10
   maxBarValue: 500
   currentBarValue: 0
+  invertBar: 0
   enforceBarBounds: 1
   enforceTextBounds: 0
   centeredBar: 1
@@ -3228,6 +3229,7 @@ MonoBehaviour:
   barChangeSpeed: 0
   maxBarValue: 100
   currentBarValue: 100
+  invertBar: 1
   enforceBarBounds: 1
   enforceTextBounds: 1
   centeredBar: 0
@@ -3522,6 +3524,7 @@ MonoBehaviour:
   barChangeSpeed: 10
   maxBarValue: 100
   currentBarValue: 0
+  invertBar: 0
   enforceBarBounds: 1
   enforceTextBounds: 0
   centeredBar: 0
