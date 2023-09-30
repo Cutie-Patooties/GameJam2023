@@ -514,6 +514,8 @@ MonoBehaviour:
   noWeaponSprite: {fileID: 0}
   defaultWeaponSprite: {fileID: 21300000, guid: 755310fab2e085647bb4aed0e24fbb0a, type: 3}
   shotgunSprite: {fileID: 21300000, guid: fad311ab25c491148b710d733b8e7cc9, type: 3}
+  defaultWeaponSound: {fileID: 8300000, guid: cc806a2fa9cf25d4faf38525dc7e7b0d, type: 3}
+  shotgunSound: {fileID: 8300000, guid: 7f7b340394739b149989c20faad448fe, type: 3}
   invertScrollWheel: 0
 --- !u!82 &8312737437422245152
 AudioSource:
