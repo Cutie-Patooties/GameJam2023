@@ -5,17 +5,20 @@
 **/
 
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField] private GameObject debugManager = null;
 
-    // Variables regarding current player information
+    // Variables regarding current player health
     public float maxHealth = 100;
     public float currentHealth = 100;
+    private float previousHealth;
+    private SpriteRenderer playerSprite;
+    private Color originalColor;
 
-    // Variables needed for Movement
+    // Other Variables needed
     public float movementSpeed = 1f;
     public Vector2 lastMovementDirection;
     private RangedWeaponManager playerWeapons;
@@ -29,6 +32,8 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<Animator>();
         playerWeapons = GetComponent<RangedWeaponManager>();
+        playerSprite = GetComponent<SpriteRenderer>();
+        originalColor = playerSprite.color;
 
         // Attempt to find debug manager if it is null
         if (debugManager == null) debugManager = GameObject.Find("DebugInfo");
@@ -90,6 +95,14 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimation.speed = 0.0f;
         }
+
+        // Flash RED to indicate player has gotten hit
+
+        if (currentHealth < previousHealth)
+        {
+            StartCoroutine(FlashRed());
+        }
+        previousHealth = currentHealth;
     }
 
     private void OnDisable()
@@ -109,5 +122,12 @@ public class PlayerController : MonoBehaviour
             playerWeapons.AddWeapon(new WeaponShotgun("Burst Shot", Color.white, playerWeapons.shotgunSprite, playerWeapons.shotgunSound, 2, 0.3f, 10, 25.0f, 1f, playerWeapons.projectileObject, Mathf.Deg2Rad * 10.0f));
             Destroy(other.gameObject);
         }
+    }
+
+    IEnumerator FlashRed()
+    {
+        playerSprite.color = Color.red;
+        yield return new WaitForSeconds(0.3f);
+        playerSprite.color = originalColor;
     }
 }
