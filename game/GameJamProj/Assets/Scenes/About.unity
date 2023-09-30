@@ -182,11 +182,20 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'About:
 
-    TODO: write this
 
     How to Play:
 
-    TODO: write this'
+    WASD to move
+
+    Left Click to shoot
+
+    Shift
+    or Right click for melee
+
+    Scroll wheel to change weapon mode
+
+    Spacebar
+    to use ultimate (yellow bar must be at 100%)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b499f16d794d80247a635b9fe22b720c, type: 2}
   m_sharedMaterial: {fileID: 5754788090613241588, guid: b499f16d794d80247a635b9fe22b720c, type: 2}
