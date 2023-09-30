@@ -119,6 +119,7 @@ public class PlayerAttack : MonoBehaviour
 
         superRadius.SetActive(true);
         superRadius.GetComponent<SuperAttackScript>().enabled = true;
+        superRadius.GetComponent<AudioSource>().Play();
 
         currentEnergy = 0;
 

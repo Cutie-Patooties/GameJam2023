@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemySpawner[] enemySpawners;
     [SerializeField] private PowerUpSpawn powerupSpawner;
     [SerializeField] private GameObject miniBoss;
+    [SerializeField] private AudioSource waveComplete;
     [SerializeField] private TextMeshProUGUI waveText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI scoreMultiplier;
@@ -124,6 +125,7 @@ public class GameManager : MonoBehaviour
         hasEnded = true;
         wave++;
         waveText.text = "WAVE " + wave;
+        waveComplete.PlayOneShot(waveComplete.clip);
 
         if (wave % waveDifficultyIncreaseInterval == 0)
         {
