@@ -12,12 +12,13 @@ public class EnemyProximityCheck : MonoBehaviour
     public int numberOfEnemies = 0;
     public SpriteRenderer proximityEffect;
     private Color originalColor;
-    private readonly float lowAlpha = 0.5f;
-    private readonly float highAlpha = 1.0f;
 
     private void Awake()
     {
         originalColor = proximityEffect.color;
+        Color updatedColor = originalColor;
+        updatedColor.a = 0.05f;
+        proximityEffect.color = updatedColor;
     }
 
     // This will keep track of how many enemies are within a radius
@@ -41,11 +42,29 @@ public class EnemyProximityCheck : MonoBehaviour
     // This will give visual indication on how many enemies are around them
     private void UpdateAlpha()
     {
-        float alpha = Mathf.Lerp(lowAlpha, highAlpha, numberOfEnemies / 10.0f);
-        alpha = Mathf.Clamp(alpha, lowAlpha, highAlpha);
-
-        Color updatedColor = originalColor;
-        updatedColor.a = alpha;
-        proximityEffect.color = updatedColor;
+        if (numberOfEnemies >= 10)
+        {
+            Color updatedColor = originalColor;
+            updatedColor.a = 0.55f;
+            proximityEffect.color = updatedColor;
+        }
+        else if (numberOfEnemies >= 5)
+        {
+            Color updatedColor = originalColor;
+            updatedColor.a = 0.35f;
+            proximityEffect.color = updatedColor;
+        }
+        else if (numberOfEnemies >= 1)
+        {
+            Color updatedColor = originalColor;
+            updatedColor.a = 0.15f;
+            proximityEffect.color = updatedColor;
+        }
+        else
+        {
+            Color updatedColor = originalColor;
+            updatedColor.a = 0.05f;
+            proximityEffect.color = updatedColor;
+        }
     }
 }
