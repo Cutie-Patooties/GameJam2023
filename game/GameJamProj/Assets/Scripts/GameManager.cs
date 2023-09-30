@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     // Other variables needed
     [SerializeField] private EnemySpawner[] enemySpawners;
+    [SerializeField] private PowerUpSpawn powerupSpawner;
     [SerializeField] private GameObject miniBoss;
     [SerializeField] private TextMeshProUGUI waveText;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -115,7 +116,6 @@ public class GameManager : MonoBehaviour
             foreach (EnemySpawner enemySpawner in enemySpawners)
             {
                 enemySpawner.spawnRate++;
-                enemySpawner.spawnInterval++;
             }
             waveDuration += waveDurationTimeIncrease;
         }
@@ -126,6 +126,10 @@ public class GameManager : MonoBehaviour
             enemySpawner.CancelInvoke("SpawnEnemies");
             enemySpawner.InvokeRepeating("SpawnEnemies", enemySpawner.startTime, enemySpawner.spawnInterval);
         }
+
+        powerupSpawner.CancelInvoke("SpawnPowerUps");
+        powerupSpawner.InvokeRepeating("SpawnPowerUps", 10f, powerupSpawner.spawnInterval);
+        powerupSpawner.ClearPowerUps();
 
         playerController.currentHealth += wavePlayerHealthRecovery;
         if (playerController.currentHealth > playerController.maxHealth)
