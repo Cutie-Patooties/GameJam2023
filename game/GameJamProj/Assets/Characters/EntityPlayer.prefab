@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5113a3ef59c43a444857ec110f0e97ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugManager: {fileID: 0}
   maxHealth: 100
   currentHealth: 100
   movementSpeed: 7
@@ -512,8 +513,8 @@ MonoBehaviour:
   projectileObject: {fileID: 7312258141836990282, guid: fb0b46faa1c85a540b6f7610a429e2b2, type: 3}
   weaponCooldownBar: {fileID: 0}
   noWeaponSprite: {fileID: 0}
-  defaultWeaponSprite: {fileID: 21300000, guid: 755310fab2e085647bb4aed0e24fbb0a, type: 3}
-  shotgunSprite: {fileID: 21300000, guid: fad311ab25c491148b710d733b8e7cc9, type: 3}
+  defaultWeaponSprite: {fileID: 510351894, guid: 755310fab2e085647bb4aed0e24fbb0a, type: 3}
+  shotgunSprite: {fileID: -2077691045, guid: fad311ab25c491148b710d733b8e7cc9, type: 3}
   defaultWeaponSound: {fileID: 8300000, guid: cc806a2fa9cf25d4faf38525dc7e7b0d, type: 3}
   shotgunSound: {fileID: 8300000, guid: 7f7b340394739b149989c20faad448fe, type: 3}
   invertScrollWheel: 0
