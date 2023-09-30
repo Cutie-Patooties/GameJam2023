@@ -1,7 +1,7 @@
 /**
  * Author: Alan
  * Contributors: Hudson
- * Description: This script handles player combat, melee and ranged
+ * Description: This script handles player input for melee and super attacks
 **/
 
 using System.Collections;
@@ -19,9 +19,7 @@ public class PlayerAttack : MonoBehaviour
     public float hitboxOffset = 1.25f;
 
     // Variables needed for Shooting
-    [SerializeField] private GameObject projectileObject;
-    public float shootDelay = 0.1f;
-    public float projectileSpeed = 1;
+    public GameObject projectileObject;
     public int damageIncrease = 0;
     private Camera playerCamera;
     private EnemyProximityCheck enemyCheck;
@@ -71,26 +69,9 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(EnableAttack());
         }
 
-        // Logic for increasing damage based on number of enemies nearby
+        // Logic for increasing projectile damage based on number of enemies nearby
         damageIncrease = 0;
         damageIncrease += enemyCheck.numberOfEnemies;
-
-        // Logic for shooting Projectile
-        /*if (Input.GetButton("Shoot") && canAttack)
-        {
-            canAttack = false;
-
-            GameObject projectile = Instantiate(projectileObject, transform.position, Quaternion.identity);
-
-            // Correctly get direction projectile will travel at
-            Vector2 direction = (playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;
-            projectile.GetComponent<Rigidbody2D>().velocity = direction;
-            projectile.GetComponent<Rigidbody2D>().velocity = projectile.GetComponent<Rigidbody2D>().velocity.normalized * projectileSpeed;
-
-            projectile.GetComponent<ProjectileAttackScript>().damage += damageIncrease;
-
-            StartCoroutine(EnableProjectile());
-        }*/
 
         // Logic for increasing the super meter by a certain rate
         if (currentEnergy < 100)
@@ -121,12 +102,6 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         attackHitbox.SetActive(false);
         yield return new WaitForSeconds(attackDelay);
-        canAttack = true;
-    }
-
-    IEnumerator EnableProjectile()
-    {
-        yield return new WaitForSeconds(shootDelay);
         canAttack = true;
     }
 

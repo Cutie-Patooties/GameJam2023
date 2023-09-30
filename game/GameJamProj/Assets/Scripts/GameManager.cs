@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour
     private readonly int wavePlayerHealthRecovery = 50; // How much health player recovers at the start of new wave
     private readonly float waveDurationTimeIncrease = 5.0f; // How much longer a wave lasts when difficulty increases
 
-
     // Other variables needed
     [SerializeField] private EnemySpawner[] enemySpawners;
     [SerializeField] private GameObject miniBoss;
     [SerializeField] private TextMeshProUGUI waveText;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GenericBar waveTimer;
     private float timer = 0.0f;
     private bool isDead = false;
@@ -66,7 +66,8 @@ public class GameManager : MonoBehaviour
         if(!isDead)
         {
             score += ((scoreRate * (enemyProximityCheck.numberOfEnemies + 1)) + wave) * Time.deltaTime;
-            Debug.Log("SCORE: " + Mathf.Round(score));
+            int roundedScore = Mathf.RoundToInt(score);
+            scoreText.text = roundedScore.ToString("D9");
 
             if (timer <= 0.0f) // After a certain amount of time passes, spawn miniboss
             {

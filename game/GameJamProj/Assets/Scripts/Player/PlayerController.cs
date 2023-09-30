@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         if (movementInput != Vector2.zero)
         {
             lastMovementDirection = movementInput.normalized;
+            playerAnimation.speed = 1.0f;
 
             if (Mathf.Abs(lastMovementDirection.x) > Mathf.Abs(lastMovementDirection.y))
             {
@@ -66,6 +67,10 @@ public class PlayerController : MonoBehaviour
                     currentTrigger = "MoveDown";
                 }
             }
+        }
+        else
+        {
+            playerAnimation.speed = 0.0f;
         }
     }
 

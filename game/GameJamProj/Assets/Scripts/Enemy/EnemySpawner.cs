@@ -23,10 +23,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        InvokeRepeating(nameof(SpawnEnemies), startTime, spawnInterval);
+    }
+
+    private void Update()
+    {
         xTransformPosition = transform.position.x;
         yTransformPosition = transform.position.y;
-
-        InvokeRepeating(nameof(SpawnEnemies), startTime, spawnInterval);
     }
 
     public void SpawnEnemies()
