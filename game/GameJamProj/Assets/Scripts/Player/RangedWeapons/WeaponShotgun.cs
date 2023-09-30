@@ -18,6 +18,7 @@ public class WeaponShotgun : RangedWeapon
         string name,
         Color textColor,
         Sprite icon,
+        AudioClip clip,
         int tier,
         float shotCooldown,
         int damagePerRound,
@@ -25,12 +26,12 @@ public class WeaponShotgun : RangedWeapon
         float bulletAliveTime,
         GameObject bulletPrefab,
         float shotgunSpreadAngleRadians
-    ) : base(name, textColor, icon, tier, shotCooldown, damagePerRound, projectileSpeed, bulletAliveTime, bulletPrefab)
+    ) : base(name, textColor, icon, clip, tier, shotCooldown, damagePerRound, projectileSpeed, bulletAliveTime, bulletPrefab)
     {
         m_shotgunSpreadAngleRadians = shotgunSpreadAngleRadians;
     }
 
-    public override bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease, AudioClip sound)
+    public override bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease)
     {
         // Check if we can shoot
         if (CanShoot())
@@ -44,8 +45,9 @@ public class WeaponShotgun : RangedWeapon
             SpawnProjectile(player, spawnPos, direction, damageIncrease, m_shotgunSpreadAngleRadians);     // Left
             SpawnProjectile(player, spawnPos, direction, damageIncrease, -m_shotgunSpreadAngleRadians);     // Right
 
-            // TODO: play shoot sound
-
+            // Play shoot sound
+            player.GetComponent<AudioSource>().clip = m_clip;
+            player.GetComponent<AudioSource>().Play();
 
             return true;
 

@@ -10,6 +10,8 @@ TagManager:
   - Proximity
   - Miniboss
   - OutOfBounds
+  - RapidPowerUp
+  - BurstPowerUp
   layers:
   - Default
   - TransparentFX

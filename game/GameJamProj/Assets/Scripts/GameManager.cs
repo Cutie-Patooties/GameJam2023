@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private PlayerController playerController;
     private PlayerAttack playerAttack;
     private EnemyProximityCheck enemyProximityCheck;
+    private RangedWeaponManager playerWeapons;
 
     // Variables regarding score and wave number
     public int wave = 1;
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         playerController = entityPlayer.GetComponent<PlayerController>();
         playerAttack = entityPlayer.GetComponent<PlayerAttack>();
         enemyProximityCheck = entityPlayer.GetComponentInChildren<EnemyProximityCheck>();
+        playerWeapons = entityPlayer.GetComponent<RangedWeaponManager>();
 
         timer = waveDuration;
         waveText.text = "WAVE " + wave;
@@ -128,6 +130,8 @@ public class GameManager : MonoBehaviour
         playerController.currentHealth += wavePlayerHealthRecovery;
         if (playerController.currentHealth > playerController.maxHealth)
             playerController.currentHealth = playerController.maxHealth;
+
+        playerWeapons.ResetWeapons();
 
         yield return new WaitForSeconds(enemySpawners[0].startTime);
 

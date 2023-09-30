@@ -1,6 +1,6 @@
 /**
  * Author: Hudson
- * Contributors: 
+ * Contributors: Alan
  * Description: Manages all ranged weapons
 **/
 
@@ -10,19 +10,24 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAttack))]
+[RequireComponent(typeof(AudioSource))]
 public class RangedWeaponManager : MonoBehaviour
 {
 
     [Header("Required Game Objects")]
     [SerializeField] private GameObject weaponIconObject = null;
-    [SerializeField] private GameObject projectileObject = null;
+    [SerializeField] public GameObject projectileObject = null;
     [SerializeField] private GameObject weaponCooldownBar = null;
 
     // Weapon Sprites
     [Header("Default Weapon Sprites")]
-    [SerializeField] private Sprite noWeaponSprite = null;
-    [SerializeField] private Sprite defaultWeaponSprite = null;
-    [SerializeField] private Sprite shotgunSprite = null;
+    [SerializeField] public Sprite noWeaponSprite = null;
+    [SerializeField] public Sprite defaultWeaponSprite = null;
+    [SerializeField] public Sprite shotgunSprite = null;
+
+    [Header("Default Weapon Sound Effects")]
+    [SerializeField] private AudioClip defaultWeaponSound = null;
+    [SerializeField] private AudioClip shotgunSound = null;
 
     [Header("Controls")]
     [SerializeField] private bool invertScrollWheel = false;
@@ -59,8 +64,8 @@ public class RangedWeaponManager : MonoBehaviour
         //m_weapons.Add(new Shotgun("Shotgun", Color.red, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
         /* Add weapons player should start with here (ignore warnings) */
-        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 1, 0.5f, 1, 15.0f, 3.0f, projectileObject));
-        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1, 1.5f, 3, 10.0f, 0.35f, projectileObject, Mathf.Deg2Rad * 10.0f));
+        AddWeapon(new RangedWeapon("Rapid Fire", Color.white, defaultWeaponSprite, defaultWeaponSound, 1, 0.125f, 1, 50.0f, 3.0f, projectileObject));
+        AddWeapon(new WeaponShotgun("Burst Shot", Color.white, shotgunSprite, shotgunSound, 1, 0.75f, 5, 25.0f, 0.75f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
     }
 
@@ -109,7 +114,7 @@ public class RangedWeaponManager : MonoBehaviour
             Vector2 dir = (playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;
 
             // Attempt to shoot weapon and store if successful
-            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease, null);
+            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease);
 
             if (shotFired)
             {
@@ -181,6 +186,15 @@ public class RangedWeaponManager : MonoBehaviour
 
         return false;
 
+    }
+
+    public void ResetWeapons()
+    {
+        RemoveWeapon("Rapid Fire");
+        RemoveWeapon("Burst Shot");
+
+        AddWeapon(new RangedWeapon("Rapid Fire", Color.white, defaultWeaponSprite, defaultWeaponSound, 1, 0.125f, 1, 50.0f, 3.0f, projectileObject));
+        AddWeapon(new WeaponShotgun("Burst Shot", Color.white, shotgunSprite, shotgunSound, 1, 0.75f, 5, 25.0f, 0.75f, projectileObject, Mathf.Deg2Rad * 10.0f));
     }
 
     private void UpdateWeaponUI(Sprite icon, string weaponName, int tier, Color tierColor)
