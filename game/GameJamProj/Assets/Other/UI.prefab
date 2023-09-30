@@ -1797,9 +1797,8 @@ GameObject:
   - component: {fileID: 7428260904998533283}
   - component: {fileID: 6369269892528397490}
   - component: {fileID: 8836910781185356446}
-  - component: {fileID: 7046846284825130651}
   m_Layer: 5
-  m_Name: Label (1)
+  m_Name: TimesSymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1821,7 +1820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 228, y: -4.6}
+  m_AnchoredPosition: {x: 225, y: -5.5}
   m_SizeDelta: {x: 32.7541, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6369269892528397490
@@ -1921,22 +1920,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7046846284825130651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4106056028582226508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc19ca6a677b994d9546a4eceb71800, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionX: -1
-  positionY: 1
-  offsetX: 150
-  offsetY: -50
 --- !u!1 &4318152904848735474
 GameObject:
   m_ObjectHideFlags: 0
