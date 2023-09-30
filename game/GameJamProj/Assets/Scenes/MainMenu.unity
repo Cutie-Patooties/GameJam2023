@@ -182,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
+  m_sharedMaterial: {fileID: 7228764576910478059, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -465,8 +465,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
+  m_sharedMaterial: {fileID: 7228764576910478059, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -682,7 +682,7 @@ MonoBehaviour:
   buttonSprite: {fileID: 21300000, guid: 48dfd44f9fca1174b98e07f9b092f260, type: 3}
   buttonSpriteHover: {fileID: 21300000, guid: 2e9b06a2d8c2b4a439ca625b3f3627a9, type: 3}
   enableSwitchScene: 1
-  sceneName: HudsonSandbox
+  sceneName: LEVEL1
   enableQuitGame: 0
 --- !u!212 &1605032433
 SpriteRenderer:
@@ -1098,8 +1098,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
+  m_sharedMaterial: {fileID: 7228764576910478059, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
