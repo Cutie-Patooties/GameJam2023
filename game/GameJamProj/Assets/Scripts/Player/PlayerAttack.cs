@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
 
     // Variables needed for Attacking
     [SerializeField] private GameObject attackHitbox;
+    [SerializeField] private AudioSource attackSound;
     public float attackDelay = 0.1f;
     public float hitboxOffset = 1.25f;
 
@@ -63,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
             attackHitbox.transform.position = (Vector2)transform.position + hitboxOffsetPosition;
 
             attackHitbox.SetActive(true);
+            attackSound.PlayOneShot(attackSound.clip);
             StartCoroutine(EnableAttack());
         }
         if (Input.GetButtonDown("Attack - Shift") && canAttack)
@@ -74,6 +76,7 @@ public class PlayerAttack : MonoBehaviour
             attackHitbox.transform.position = (Vector2)transform.position + hitboxOffsetPosition;
 
             attackHitbox.SetActive(true);
+            attackSound.PlayOneShot(attackSound.clip);
             StartCoroutine(EnableAttack());
         }
 
@@ -132,6 +135,9 @@ public class PlayerAttack : MonoBehaviour
 
         canAttack = true;
         playerController.enabled = true;
+
+        yield return new WaitForSeconds(0.5f);
+
         playerHitbox.enabled = true;
     }
 }
