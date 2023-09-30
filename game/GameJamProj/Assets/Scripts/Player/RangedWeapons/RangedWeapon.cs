@@ -28,6 +28,7 @@ public class RangedWeapon : Object
     protected float m_shotCooldown = 1.0f;
 
     protected int m_damagePerRound = 1;
+    protected int m_weaponTier = 0;
 
     private float m_currCooldown = 0.0f;
 
@@ -35,6 +36,7 @@ public class RangedWeapon : Object
         string name,
         Color textColor,
         Sprite icon,
+        int tier,
         float shotCooldown,
         int damagePerRound,
         float projectileSpeed,
@@ -45,6 +47,7 @@ public class RangedWeapon : Object
         m_name = name;
         m_textColor = textColor;
         m_icon = icon;
+        m_weaponTier = tier;
         m_shotCooldown = shotCooldown;
         m_damagePerRound = damagePerRound;
         m_projectileSpeed = projectileSpeed;
@@ -77,7 +80,7 @@ public class RangedWeapon : Object
     /// <param name="spawnPos">player location (transform.position)</param>
     /// <param name="direction">direction to shoot ((playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;)</param>
     /// <returns>Whether or not player is able to shoot</returns>
-    public virtual bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease)
+    public virtual bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease, AudioClip sound)
     {
 
         // Check if we can shoot
@@ -98,6 +101,7 @@ public class RangedWeapon : Object
             projectile.GetComponent<ProjectileAttackScript>().maxAliveTime = m_bulletAliveTime;
 
             // TODO: play shoot sound
+            
 
             return true;
 
@@ -144,6 +148,11 @@ public class RangedWeapon : Object
     public Color GetTextColor()
     {
         return m_textColor;
+    }
+
+    public int GetTier()
+    {
+        return m_weaponTier;
     }
 
 }

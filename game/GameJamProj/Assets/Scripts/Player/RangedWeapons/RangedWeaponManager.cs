@@ -59,8 +59,8 @@ public class RangedWeaponManager : MonoBehaviour
         //m_weapons.Add(new Shotgun("Shotgun", Color.red, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
         /* Add weapons player should start with here (ignore warnings) */
-        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 0.5f, 1, 5.0f, 5.0f, projectileObject));
-        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1.5f, 3, 3.0f, 1.0f, projectileObject, Mathf.Deg2Rad * 10.0f));
+        AddWeapon(new RangedWeapon("Ray Gun", Color.white, defaultWeaponSprite, 1, 0.5f, 1, 15.0f, 3.0f, projectileObject));
+        AddWeapon(new WeaponShotgun("Shotgun", Color.green, shotgunSprite, 1, 1.5f, 3, 10.0f, 0.35f, projectileObject, Mathf.Deg2Rad * 10.0f));
 
     }
 
@@ -74,11 +74,9 @@ public class RangedWeaponManager : MonoBehaviour
 
             // technically unnessesary but useful if player receives multiple weapons at once when having none
             activeWeapon = 0;
-            // Update weapon icon
-            weaponIconObject.GetComponent<SpriteRenderer>().sprite = noWeaponSprite;
-            // Update weapon name text and text color
-            weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = "Unarmed";
-            weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = Color.white;
+
+            // Update UI
+            UpdateWeaponUI(noWeaponSprite, "Unarmed", -1, Color.white);
 
             return;
 
@@ -96,27 +94,29 @@ public class RangedWeaponManager : MonoBehaviour
         else if (activeWeapon < 0)
             activeWeapon = 0;
 
-        // Update weapon icon
-        weaponIconObject.GetComponent<SpriteRenderer>().sprite = m_weapons[activeWeapon].GetSprite();
-        // Update weapon name text and text color
-        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = m_weapons[activeWeapon].GetWeaponName();
-        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().color = m_weapons[activeWeapon].GetTextColor();
+        // Update UI
+        UpdateWeaponUI(m_weapons[activeWeapon].GetSprite(), m_weapons[activeWeapon].GetWeaponName(), m_weapons[activeWeapon].GetTier(), m_weapons[activeWeapon].GetTextColor());
 
         // Update all weapons
         for(int i = 0; i < m_weapons.Count; ++i)
             m_weapons[i]._Update(i == activeWeapon);
 
         // Check if player wants to shoot their gun
-        if (Input.GetButton("Shoot"))
+        if (Input.GetButton("Shoot") && attackScript.canAttack)
         {
 
             // Direction player wants to shoot
             Vector2 dir = (playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;
 
             // Attempt to shoot weapon and store if successful
-            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease);
+            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease, null);
 
-            if (!shotFired)
+            if (shotFired)
+            {
+                attackScript.canAttack = false;
+                StartCoroutine(EnableProjectile());
+            }
+            else
             {
                 // TODO: play out of ammo sound
             }
@@ -129,9 +129,9 @@ public class RangedWeaponManager : MonoBehaviour
     /// Adds a weapon to the player's useable weapons. Checking for existing weapons is done via the weapon's name. The check for existing names is case-insensitive
     /// </summary>
     /// <param name="weapon">The weapon to add</param>
-    /// <param name="overrideIfAlreadyExists">True - If the weapon already exists in the list, override it\nFalse: If the weapon already exists in the list, do nothing</param>
+    /// <param name="overrideIfLowerTier">True - If the weapon already exists in the list, override it\nFalse: If the weapon already exists in the list, do nothing</param>
     /// <returns>true if added new weapon, false if weapon already existed in list (will still return false even if overrideIfAlreadyExists is true)</returns>
-    public bool AddWeapon(RangedWeapon weapon, bool overrideIfAlreadyExists = true)
+    public bool AddWeapon(RangedWeapon weapon, bool overrideIfLowerTier = true)
     {
 
         // Link UI bar to weapon
@@ -144,7 +144,8 @@ public class RangedWeaponManager : MonoBehaviour
             // If the weapon with the same name (case-insensitive) is found either override it or do nothing depending on preferences
             if (m_weapons[i].GetWeaponName().ToLower().Equals(weapon.GetWeaponName().ToLower())) {
 
-                if(overrideIfAlreadyExists)
+                // Check if we should override and if our new weapon's tier is greater than the current weapon tier
+                if(overrideIfLowerTier && m_weapons[i].GetTier() < weapon.GetTier())
                     m_weapons[i] = weapon;
 
                 return false;
@@ -171,7 +172,7 @@ public class RangedWeaponManager : MonoBehaviour
         for(int i = 0; i < m_weapons.Count; ++i)
         {
             // If we find a weapon with the same name (case-insensitive) delete it
-            if (m_weapons[i].GetWeaponName().ToLower().Equals(weaponName))
+            if (m_weapons[i].GetWeaponName().ToLower().Equals(weaponName.ToLower()))
             {
                 m_weapons.RemoveAt(i);
                 return true;
@@ -180,6 +181,25 @@ public class RangedWeaponManager : MonoBehaviour
 
         return false;
 
+    }
+
+    private void UpdateWeaponUI(Sprite icon, string weaponName, int tier, Color tierColor)
+    {
+        // Update weapon icon
+        weaponIconObject.GetComponent<SpriteRenderer>().sprite = icon;
+        // Update weapon name text and text color
+        weaponIconObject.transform.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = weaponName;
+        if (tier == -1)
+            weaponIconObject.transform.Find("WeaponTier").GetComponent<TextMeshProUGUI>().text = "";
+        else
+            weaponIconObject.transform.Find("WeaponTier").GetComponent<TextMeshProUGUI>().text = "Tier " + tier;
+        weaponIconObject.transform.Find("WeaponTier").GetComponent<TextMeshProUGUI>().color = tierColor;
+    }
+
+    IEnumerator EnableProjectile()
+    {
+        yield return new WaitForSeconds(weaponCooldownBar.GetComponent<GenericBar>().GetMaxBarValue());
+        attackScript.canAttack = true;
     }
 
 }

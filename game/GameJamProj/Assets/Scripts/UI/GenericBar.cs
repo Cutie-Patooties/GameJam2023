@@ -70,6 +70,15 @@ public class GenericBar : MonoBehaviour
     }
 
     /// <summary>
+    /// Gets the max bar value
+    /// </summary>
+    /// <returns>The max bar value</returns>
+    public float GetMaxBarValue()
+    {
+        return maxBarValue;
+    }
+
+    /// <summary>
     /// Sets both current and max values for the bar
     /// </summary>
     /// <param name="newValue">Update the old current value with a new one</param>

@@ -18,18 +18,19 @@ public class WeaponShotgun : RangedWeapon
         string name,
         Color textColor,
         Sprite icon,
+        int tier,
         float shotCooldown,
         int damagePerRound,
         float projectileSpeed,
         float bulletAliveTime,
         GameObject bulletPrefab,
         float shotgunSpreadAngleRadians
-    ) : base(name, textColor, icon, shotCooldown, damagePerRound, projectileSpeed, bulletAliveTime, bulletPrefab)
+    ) : base(name, textColor, icon, tier, shotCooldown, damagePerRound, projectileSpeed, bulletAliveTime, bulletPrefab)
     {
         m_shotgunSpreadAngleRadians = shotgunSpreadAngleRadians;
     }
 
-    public override bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease)
+    public override bool _Shoot(GameObject player, Vector3 spawnPos, Vector2 direction, int damageIncrease, AudioClip sound)
     {
         // Check if we can shoot
         if (CanShoot())
@@ -44,6 +45,7 @@ public class WeaponShotgun : RangedWeapon
             SpawnProjectile(player, spawnPos, direction, damageIncrease, -m_shotgunSpreadAngleRadians);     // Right
 
             // TODO: play shoot sound
+
 
             return true;
 
