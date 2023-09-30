@@ -110,7 +110,7 @@ public class RangedWeaponManager : MonoBehaviour
             Vector2 dir = (playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10.0f)) - transform.position).normalized;
 
             // Attempt to shoot weapon and store if successful
-            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease, null);
+            bool shotFired = m_weapons[activeWeapon]._Shoot(transform.gameObject, transform.position, dir, attackScript.damageIncrease);
 
             if (shotFired)
             {
@@ -189,8 +189,8 @@ public class RangedWeaponManager : MonoBehaviour
         RemoveWeapon("Rapid Fire");
         RemoveWeapon("Burst Shot");
 
-        AddWeapon(new RangedWeapon("Rapid Fire", Color.white, defaultWeaponSprite, 1, 0.125f, 1, 50.0f, 3.0f, projectileObject));
-        AddWeapon(new WeaponShotgun("Burst Shot", Color.white, shotgunSprite, 1, 0.75f, 5, 25.0f, 0.75f, projectileObject, Mathf.Deg2Rad * 10.0f));
+        AddWeapon(new RangedWeapon("Rapid Fire", Color.white, defaultWeaponSprite, null, 1, 0.125f, 1, 50.0f, 3.0f, projectileObject));
+        AddWeapon(new WeaponShotgun("Burst Shot", Color.white, shotgunSprite, null, 1, 0.75f, 5, 25.0f, 0.75f, projectileObject, Mathf.Deg2Rad * 10.0f));
     }
 
     private void UpdateWeaponUI(Sprite icon, string weaponName, int tier, Color tierColor)
