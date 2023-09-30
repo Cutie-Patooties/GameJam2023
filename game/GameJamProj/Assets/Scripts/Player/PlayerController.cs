@@ -119,13 +119,13 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("RapidPowerUp"))
         {
-            playerWeapons.AddWeapon(new RangedWeapon("Rapid Fire", Color.white, playerWeapons.defaultWeaponSprite, playerWeapons.defaultWeaponSound, 2, 0.1f, 5, 60.0f, 3.5f, playerWeapons.projectileObject));
+            playerWeapons.AddWeapon(new RangedWeapon("Rapid Fire", Color.magenta, playerWeapons.defaultWeaponSprite, playerWeapons.defaultWeaponSound, 2, 0.1f, 5, 60.0f, 3.5f, playerWeapons.projectileObject));
             pickupSound.PlayOneShot(pickupSound.clip);
             Destroy(other.gameObject);
         }
         if(other.CompareTag("BurstPowerUp"))
         {
-            playerWeapons.AddWeapon(new WeaponShotgun("Burst Shot", Color.white, playerWeapons.shotgunSprite, playerWeapons.shotgunSound, 2, 0.3f, 10, 25.0f, 1f, playerWeapons.projectileObject, Mathf.Deg2Rad * 10.0f));
+            playerWeapons.AddWeapon(new WeaponShotgun("Burst Shot", Color.magenta, playerWeapons.shotgunSprite, playerWeapons.shotgunSound, 2, 0.3f, 10, 25.0f, 1f, playerWeapons.projectileObject, Mathf.Deg2Rad * 10.0f));
             pickupSound.PlayOneShot(pickupSound.clip);
             Destroy(other.gameObject);
         }
