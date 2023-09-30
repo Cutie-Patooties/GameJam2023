@@ -80,7 +80,7 @@ public class PlayerAttack : MonoBehaviour
             currentEnergy = 100;
         if (currentEnergy == 100)
             canUnleashUltimateDestruction = true;
-        superMeter.SetBarValue(Mathf.Round(currentEnergy));
+        superMeter.SetBarValue(currentEnergy);
 
         // Logic for performing a super attack
         if (Input.GetButtonDown("Super") && canUnleashUltimateDestruction)
