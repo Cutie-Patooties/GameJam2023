@@ -1309,7 +1309,6 @@ MonoBehaviour:
   debugEnabled: 0
   gameTitle: Blacklight Firefight
   gameVersion: 0.9.1
-  uiCanvas: {fileID: 0}
 --- !u!1 &3187035261244871872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,8 +1964,8 @@ SpriteRenderer:
   m_SortingLayerID: 1021797385
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.95059407, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 91ebde47fcf2e3e4ba12010b70d072fb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
