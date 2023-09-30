@@ -26,8 +26,8 @@ public class RangedWeaponManager : MonoBehaviour
     [SerializeField] public Sprite shotgunSprite = null;
 
     [Header("Default Weapon Sound Effects")]
-    [SerializeField] private AudioClip defaultWeaponSound = null;
-    [SerializeField] private AudioClip shotgunSound = null;
+    [SerializeField] public AudioClip defaultWeaponSound = null;
+    [SerializeField] public AudioClip shotgunSound = null;
 
     [Header("Controls")]
     [SerializeField] private bool invertScrollWheel = false;

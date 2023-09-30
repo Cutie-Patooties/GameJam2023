@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score Multiplier: '
+  m_text: 'Score Multiplier: x'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
   m_sharedMaterial: {fileID: 7228764576910478059, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
@@ -3059,7 +3059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -437.4, y: 395}
+  m_AnchoredPosition: {x: -410, y: 395}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &724622529167181341
@@ -3173,7 +3173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionX: -1
   positionY: 1
-  offsetX: 450
+  offsetX: 475
   offsetY: -50
 --- !u!1 &7775602371059470146
 GameObject:

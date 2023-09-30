@@ -6,12 +6,16 @@
 
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class PlayerAttack : MonoBehaviour
 {
     // Variables needed for this script
     [System.NonSerialized] public bool canAttack;
     private PlayerController playerController;
+    private BoxCollider2D playerHitbox;
+    private Animator playerAnimator;
+    private Camera playerCamera;
 
     // Variables needed for Attacking
     [SerializeField] private GameObject attackHitbox;
@@ -19,9 +23,8 @@ public class PlayerAttack : MonoBehaviour
     public float hitboxOffset = 1.25f;
 
     // Variables needed for Shooting
-    public GameObject projectileObject;
     public int damageIncrease = 0;
-    private Camera playerCamera;
+    public TextMeshProUGUI damageText;
     private EnemyProximityCheck enemyCheck;
 
     // Variables needed for Super Attack
@@ -30,14 +33,19 @@ public class PlayerAttack : MonoBehaviour
     public float superDuration = 0.5f;
     public float energyRate = 0.5f;
     private float currentEnergy = 0.0f;
+    private float animationStartup = 0.5f;
     private bool canUnleashUltimateDestruction = false;
 
     private void Start()
     {
-        playerController = GetComponent<PlayerController>();
-        enemyCheck = GetComponentInChildren<EnemyProximityCheck>();
         playerCamera = Camera.main;
+        playerController = GetComponent<PlayerController>();
+        playerHitbox = GetComponent<BoxCollider2D>();
+        playerAnimator = GetComponent<Animator>();
+        enemyCheck = GetComponentInChildren<EnemyProximityCheck>();
+
         canAttack = true;
+        damageText.text = damageIncrease.ToString("D2");
     }
 
     private void Update()
@@ -72,6 +80,7 @@ public class PlayerAttack : MonoBehaviour
         // Logic for increasing projectile damage based on number of enemies nearby
         damageIncrease = 0;
         damageIncrease += enemyCheck.numberOfEnemies;
+        damageText.text = damageIncrease.ToString("D2");
 
         // Logic for increasing the super meter by a certain rate
         if (currentEnergy < 100)
@@ -85,15 +94,7 @@ public class PlayerAttack : MonoBehaviour
         // Logic for performing a super attack
         if (Input.GetButtonDown("Super") && canUnleashUltimateDestruction)
         {
-            canAttack = false;
-            canUnleashUltimateDestruction = false;
-
-            superRadius.SetActive(true);
-            superRadius.GetComponent<SuperAttackScript>().enabled = true;
-            playerController.enabled = false;
-
-            currentEnergy = 0;
-            StartCoroutine(ResetSuper());
+            StartCoroutine(ActivateSuper());
         }
     }
 
@@ -105,14 +106,31 @@ public class PlayerAttack : MonoBehaviour
         canAttack = true;
     }
 
-    IEnumerator ResetSuper()
+    IEnumerator ActivateSuper()
     {
+        canAttack = false;
+        canUnleashUltimateDestruction = false;
+
+        playerController.enabled = false;
+        playerHitbox.enabled = false;
+
+        playerAnimator.SetTrigger("Special");
+        yield return new WaitForSeconds(animationStartup);
+
+        superRadius.SetActive(true);
+        superRadius.GetComponent<SuperAttackScript>().enabled = true;
+
+        currentEnergy = 0;
+
         yield return new WaitForSeconds(superDuration);
+
+        playerAnimator.SetTrigger("MoveDown");
 
         superRadius.SetActive(false);
         superRadius.GetComponent<SuperAttackScript>().enabled = false;
 
         canAttack = true;
         playerController.enabled = true;
+        playerHitbox.enabled = true;
     }
 }

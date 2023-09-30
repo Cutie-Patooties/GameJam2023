@@ -5,6 +5,7 @@
 **/
 
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -33,11 +34,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject miniBoss;
     [SerializeField] private TextMeshProUGUI waveText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreMultiplier;
     [SerializeField] private GenericBar waveTimer;
     private float timer = 0.0f;
+    private bool inGame = true;
     private bool isDead = false;
     public bool bossAppeared = false;
     public bool hasEnded = false;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -54,23 +62,29 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Game ends when player's health reaches zero, final score is shown
-        if(playerController.currentHealth <= 0)
+        if(playerController.currentHealth <= 0 && inGame)
         {
             playerController.currentHealth = 0;
 
             playerController.enabled = false;
             playerAttack.enabled = false;
+            playerWeapons.enabled = false;
             enemyProximityCheck.enabled = false;
 
             isDead = true;
+            inGame = false;
+
+            SceneManager.LoadScene("GameOver");
+            SceneManager.sceneLoaded += OnGameOver;
         }
 
         // If player is still alive, continue adding to score
         if(!isDead)
         {
-            score += ((scoreRate * (enemyProximityCheck.numberOfEnemies + 1)) + wave) * Time.deltaTime;
+            score += (scoreRate * (enemyProximityCheck.numberOfEnemies + wave)) * Time.deltaTime;
             int roundedScore = Mathf.RoundToInt(score);
             scoreText.text = roundedScore.ToString("D9");
+            scoreMultiplier.text = (enemyProximityCheck.numberOfEnemies + wave).ToString("D2");
 
             if (timer <= 0.0f) // After a certain amount of time passes, spawn miniboss
             {
@@ -140,5 +154,20 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(enemySpawners[0].startTime);
 
         hasEnded = false;
+    }
+
+    private void OnGameOver(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "GameOver") // Display Final Score on Game Over screen
+        {
+            GameObject finalScore = GameObject.Find("MainMenu/ScoreGroup/Score");
+            int roundedScore = Mathf.RoundToInt(score);
+            finalScore.GetComponent<TextMeshProUGUI>().text = roundedScore.ToString("D9");
+        }
+        else
+        {
+            SceneManager.sceneLoaded -= OnGameOver;
+            Destroy(gameObject);
+        }
     }
 }

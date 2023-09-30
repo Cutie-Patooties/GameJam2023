@@ -1301,26 +1301,26 @@ MonoBehaviour:
 
 
     Technical
-    Director:
+    Director / Main Programmer:
 
     Alan Villalobos
 
 
-    Game Design Director / Sound Engineer:
+    Game Design Director /
+    Sound Engineer:
 
-    Benjamin
-    Dendy
-
-
-    Art Director:
-
-    Maddy Blommel
+    Benjamin Dendy
 
 
-    Assistant Programmer:
+    Art Director / Animator:
 
-    Hyungjin
-    Jeong'
+    Maddy
+    Blommel
+
+
+    QA Tester / Assistant Programmer:
+
+    Hyungjin Jeong'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b499f16d794d80247a635b9fe22b720c, type: 2}
   m_sharedMaterial: {fileID: 5754788090613241588, guid: b499f16d794d80247a635b9fe22b720c, type: 2}

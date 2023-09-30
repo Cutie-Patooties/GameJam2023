@@ -167,7 +167,7 @@ MonoBehaviour:
   minibossKillEffect: {fileID: 4666450995212911901, guid: 8cdb4c903e3784f4db35ac50c3627460, type: 3}
   attackCooldown: 5
   attackDamage: 25
-  projectileCooldown: 5
+  projectileCooldown: 3
   projectileSpeed: 5
   minibossProjectile: {fileID: 7312258141836990282, guid: 3d1b11b6bb2d71f42832e947bf19dbc4, type: 3}
 --- !u!95 &832749750828501056

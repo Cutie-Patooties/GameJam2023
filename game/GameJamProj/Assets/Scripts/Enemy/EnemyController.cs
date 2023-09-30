@@ -27,7 +27,9 @@ public class EnemyController : MonoBehaviour
         enemyrb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("EntityPlayer");
         game = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         canAttack = true;
+        maxHealth += (game.wave - 1);
     }
 
     private void Update()

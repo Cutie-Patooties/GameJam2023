@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
         // Give coordinates to debug manager
         if (debugManager != null)
         {
@@ -52,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
         Vector2 movementInput = new(horizontalInput, verticalInput);
         playerRigidBody.velocity = movementSpeed * movementInput;
+
+        // Logic for setting animation based on movement direction
 
         if (movementInput != Vector2.zero)
         {
@@ -100,12 +101,12 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("RapidPowerUp"))
         {
-            playerWeapons.AddWeapon(new RangedWeapon("Rapid Fire", Color.white, playerWeapons.defaultWeaponSprite, null, 2, 0.1f, 5, 60.0f, 3.5f, playerWeapons.projectileObject));
+            playerWeapons.AddWeapon(new RangedWeapon("Rapid Fire", Color.white, playerWeapons.defaultWeaponSprite, playerWeapons.defaultWeaponSound, 2, 0.1f, 5, 60.0f, 3.5f, playerWeapons.projectileObject));
             Destroy(other.gameObject);
         }
         if(other.CompareTag("BurstPowerUp"))
         {
-            playerWeapons.AddWeapon(new WeaponShotgun("Burst Shot", Color.white, playerWeapons.shotgunSprite, null, 2, 0.3f, 10, 25.0f, 1f, playerWeapons.projectileObject, Mathf.Deg2Rad * 10.0f));
+            playerWeapons.AddWeapon(new WeaponShotgun("Burst Shot", Color.white, playerWeapons.shotgunSprite, playerWeapons.shotgunSound, 2, 0.3f, 10, 25.0f, 1f, playerWeapons.projectileObject, Mathf.Deg2Rad * 10.0f));
             Destroy(other.gameObject);
         }
     }

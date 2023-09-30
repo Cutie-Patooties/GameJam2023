@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.05548787, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   killEffect: {fileID: 2512356281952499881}
   shakeIntensity: 0.15
-  minibossDamage: 20
+  minibossDamage: 50
 --- !u!1 &1145891438764708334
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,8 +491,8 @@ MonoBehaviour:
   attackHitbox: {fileID: 719126991662504196}
   attackDelay: 0.15
   hitboxOffset: 1.25
-  projectileObject: {fileID: 7312258141836990282, guid: fb0b46faa1c85a540b6f7610a429e2b2, type: 3}
   damageIncrease: 0
+  damageText: {fileID: 0}
   superRadius: {fileID: 5853749807512181003}
   superMeter: {fileID: 0}
   superDuration: 0.6
@@ -530,7 +530,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
-  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
+  - {fileID: 5161665995945381025, guid: 960ab9f8cfbc30c45b4a82214c1ddd05, type: 3}
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
   enemyProjectile: {fileID: 1636339738546195907, guid: 59f5ab3275137664eae29f5b9f6a10fc, type: 3}
 --- !u!1 &2768090486492718880
@@ -723,7 +723,7 @@ MonoBehaviour:
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
-  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
+  - {fileID: 5161665995945381025, guid: 960ab9f8cfbc30c45b4a82214c1ddd05, type: 3}
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
   enemyProjectile: {fileID: 1636339738546195907, guid: 59f5ab3275137664eae29f5b9f6a10fc, type: 3}
 --- !u!1 &2822717164804990604
@@ -803,7 +803,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.42813087, a: 0.19607843}
+  m_Color: {r: 0, g: 1, b: 0.43137255, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1183,7 +1183,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.7202713, b: 0, a: 1}
+      maxColor: {r: 0.45049608, g: 1, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5804,7 +5804,7 @@ MonoBehaviour:
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
-  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
+  - {fileID: 5161665995945381025, guid: 960ab9f8cfbc30c45b4a82214c1ddd05, type: 3}
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
   enemyProjectile: {fileID: 1636339738546195907, guid: 59f5ab3275137664eae29f5b9f6a10fc, type: 3}
 --- !u!1 &3657001143343368241
@@ -5860,7 +5860,7 @@ MonoBehaviour:
   startTime: 3
   enemyObjects:
   - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
-  - {fileID: 1600574405214284115, guid: 60a710584fc22b64589889fbf098841f, type: 3}
+  - {fileID: 5161665995945381025, guid: 960ab9f8cfbc30c45b4a82214c1ddd05, type: 3}
   - {fileID: 1600574405214284115, guid: 750d1481d1b82b74e989cf7bf0ce8842, type: 3}
   enemyProjectile: {fileID: 1636339738546195907, guid: 59f5ab3275137664eae29f5b9f6a10fc, type: 3}
 --- !u!1 &5365562450557331141
@@ -10884,5 +10884,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 2103682373196698172}
-  shakeIntensity: 0.75
-  minibossDamage: 200
+  shakeIntensity: 0.8
+  minibossDamage: 250
