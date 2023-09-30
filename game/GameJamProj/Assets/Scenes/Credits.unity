@@ -638,7 +638,7 @@ MonoBehaviour:
   buttonSpriteHover: {fileID: 0}
   enableSwitchScene: 0
   openExternalLinkInstead: 1
-  sceneName: https://hudsongreen.com/
+  sceneName: https://linkedin.com/in/hkgr
   enableQuitGame: 0
 --- !u!61 &429437172
 BoxCollider2D:
