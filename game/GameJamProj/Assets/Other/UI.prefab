@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugEnabled: 0
   gameTitle: Blacklight Firefight
-  gameVersion: 0.3.2
+  gameVersion: 0.9.1
   uiCanvas: {fileID: 0}
 --- !u!1 &3187035261244871872
 GameObject:

@@ -19,12 +19,6 @@ public class DebugManager : MonoBehaviour
     [SerializeField] private string gameTitle = "Game Title";
     [SerializeField] private string gameVersion = "0.0.0";
 
-    // UI Canvas object
-    [SerializeField] private GameObject uiCanvas = null;
-
-    // Canvas component
-    private Canvas uiCanvasComponent = null;
-
     // Stores additional debug fields
     private SortedDictionary<string, string> customDebugFields = null;
 
@@ -47,8 +41,6 @@ public class DebugManager : MonoBehaviour
     void Start()
     {
         // Set uiCanvasComponent to the UI canvas component
-        if(uiCanvas != null)
-            uiCanvasComponent = uiCanvas.GetComponent<Canvas>();
     }
 
     // Update is called once per frame

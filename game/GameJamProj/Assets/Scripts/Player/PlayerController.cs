@@ -8,6 +8,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    [SerializeField] private GameObject debugManager = null;
+
     // Variables regarding current player information
     public float maxHealth = 100;
     public float currentHealth = 100;
@@ -26,10 +29,22 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<Animator>();
         playerWeapons = GetComponent<RangedWeaponManager>();
+
+        // Attempt to find debug manager if it is null
+        if (debugManager == null) debugManager = GameObject.Find("DebugInfo");
     }
 
     private void Update()
     {
+
+        // Give coordinates to debug manager
+        if (debugManager != null)
+        {
+            debugManager.GetComponent<DebugManager>().UpdateCustomDebugField(
+                "player_coords", "XYZ: " + transform.position.x + " / " + transform.position.y + " / " + transform.position.z
+            );
+        }
+
         // Logic for implementing Movement
 
         float horizontalInput = Input.GetAxis("Horizontal");
