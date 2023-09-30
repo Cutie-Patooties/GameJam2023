@@ -13,20 +13,26 @@ public class EnemyController : MonoBehaviour
 
     public float movementSpeed;
     public float maxHealth;
+    private float currentHealth;
+    private Color originalColor;
 
     public float attackCooldown;
     public float attackDamage;
     private bool canAttack;
 
     private Rigidbody2D enemyrb;
+    private SpriteRenderer enemySprite;
     private GameObject player;
     private GameManager game;
 
     private void Start()
     {
         enemyrb = GetComponent<Rigidbody2D>();
+        enemySprite = GetComponent<SpriteRenderer>();
         player = GameObject.Find("EntityPlayer");
         game = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        originalColor = enemySprite.color;
 
         canAttack = true;
         maxHealth += (game.wave - 1);
@@ -46,6 +52,14 @@ public class EnemyController : MonoBehaviour
         }
         else if (game.hasEnded)
             Destroy(gameObject);
+
+        // Flash RED to indicate enemy has gotten hit
+
+        if (maxHealth < currentHealth)
+        {
+            StartCoroutine(FlashRed());
+        }
+        currentHealth = maxHealth;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -63,5 +77,12 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
+    }
+
+    IEnumerator FlashRed()
+    {
+        enemySprite.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        enemySprite.color = originalColor;
     }
 }
