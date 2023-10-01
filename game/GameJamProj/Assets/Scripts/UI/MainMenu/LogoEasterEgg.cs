@@ -15,6 +15,7 @@ public class LogoEasterEgg : MonoBehaviour
 {
 
     [SerializeField] private Sprite logoEasterEgg = null;
+    [SerializeField] private bool openGithubRepo = false;
 
     private Sprite defaultLogo = null;
 
@@ -33,6 +34,8 @@ public class LogoEasterEgg : MonoBehaviour
             // Play knife sheeng sound
             GetComponent<AudioSource>().Play();
         }
+        if (openGithubRepo)
+            Application.OpenURL("https://github.com/Cutie-Patooties/GameJam2023");
     }
 
 }

@@ -1034,6 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logoEasterEgg: {fileID: 21300000, guid: 00ea127b2220eb24f9a23ec47d283568, type: 3}
+  openGithubRepo: 0
 --- !u!61 &1610539703
 BoxCollider2D:
   m_ObjectHideFlags: 0
