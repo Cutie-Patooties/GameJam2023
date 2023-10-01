@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugEnabled: 0
   gameTitle: Blacklight Firefight
-  gameVersion: 0.9.1
+  gameVersion: 1.0.0
 --- !u!1 &3187035261244871872
 GameObject:
   m_ObjectHideFlags: 0
