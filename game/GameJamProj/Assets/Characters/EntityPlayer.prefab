@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1989418856721316432}
   - component: {fileID: 2146976469162908865}
   - component: {fileID: 7030144279372723712}
-  - component: {fileID: 4783599536465057589}
   m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: Proximity
@@ -78,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1179219709, guid: 4ba029104fd562c449e078a7124f6130, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.05548787, a: 1}
+  m_Sprite: {fileID: 21300000, guid: cfb852a16c29a0441bb9e12ea97dd6ef, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,27 +165,6 @@ MonoBehaviour:
   killEffect: {fileID: 2512356281952499881}
   shakeIntensity: 0.2
   minibossDamage: 50
---- !u!95 &4783599536465057589
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719126991662504196}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8c43b609abedb69499a34446a01b513e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1145891438764708334
 GameObject:
   m_ObjectHideFlags: 0
