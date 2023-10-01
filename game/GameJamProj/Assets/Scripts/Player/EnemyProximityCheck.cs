@@ -1,9 +1,10 @@
 /**
  * Author: Alan
- * Contributors: N/A
+ * Contributors: Hudson
  * Description: This script keeps track of how many enemies are near the player
 **/
 
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class EnemyProximityCheck : MonoBehaviour
@@ -12,6 +13,7 @@ public class EnemyProximityCheck : MonoBehaviour
     public int numberOfEnemies = 0;
     public SpriteRenderer proximityEffect;
     private Color originalColor;
+    private float fadeTime = 5.0f;
 
     private void Awake()
     {
@@ -21,13 +23,17 @@ public class EnemyProximityCheck : MonoBehaviour
         proximityEffect.color = updatedColor;
     }
 
+    public void Update()
+    {
+        UpdateAlpha();
+    }
+
     // This will keep track of how many enemies are within a radius
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
             numberOfEnemies++;
-            UpdateAlpha();
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -35,7 +41,6 @@ public class EnemyProximityCheck : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             numberOfEnemies--;
-            UpdateAlpha();
         }
     }
 
@@ -45,25 +50,25 @@ public class EnemyProximityCheck : MonoBehaviour
         if (numberOfEnemies >= 10)
         {
             Color updatedColor = originalColor;
-            updatedColor.a = 0.55f;
+            updatedColor.a = Mathf.Lerp(updatedColor.a, 0.65f, Time.deltaTime * fadeTime);
             proximityEffect.color = updatedColor;
         }
         else if (numberOfEnemies >= 5)
         {
             Color updatedColor = originalColor;
-            updatedColor.a = 0.35f;
+            updatedColor.a = Mathf.Lerp(updatedColor.a, 0.45f, Time.deltaTime * fadeTime);
             proximityEffect.color = updatedColor;
         }
         else if (numberOfEnemies >= 1)
         {
             Color updatedColor = originalColor;
-            updatedColor.a = 0.15f;
+            updatedColor.a = Mathf.Lerp(updatedColor.a, 0.25f, Time.deltaTime * fadeTime);
             proximityEffect.color = updatedColor;
         }
         else
         {
             Color updatedColor = originalColor;
-            updatedColor.a = 0.05f;
+            updatedColor.a = Mathf.Lerp(updatedColor.a, 0.05f, Time.deltaTime * fadeTime);
             proximityEffect.color = updatedColor;
         }
     }
