@@ -493,14 +493,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackHitbox: {fileID: 719126991662504196}
   attackSound: {fileID: 3378333916456935910}
-  attackDelay: 0.15
+  attackDelay: 1.5
   hitboxOffset: 1.25
   damageIncrease: 0
   damageText: {fileID: 0}
   superRadius: {fileID: 5853749807512181003}
   superMeter: {fileID: 0}
   superDuration: 0.6
-  energyRate: 0.5
+  energyRate: 0.35
 --- !u!114 &6705071362936383587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   defaultWeaponSprite: {fileID: 510351894, guid: 755310fab2e085647bb4aed0e24fbb0a, type: 3}
   shotgunSprite: {fileID: -2077691045, guid: fad311ab25c491148b710d733b8e7cc9, type: 3}
   defaultWeaponSound: {fileID: 8300000, guid: cc806a2fa9cf25d4faf38525dc7e7b0d, type: 3}
-  shotgunSound: {fileID: 8300000, guid: 424bcc70a815efb448219997788fb971, type: 3}
+  shotgunSound: {fileID: 8300000, guid: 7f7b340394739b149989c20faad448fe, type: 3}
   invertScrollWheel: 0
 --- !u!82 &8312737437422245152
 AudioSource:
@@ -6104,9 +6104,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7f7b340394739b149989c20faad448fe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 424bcc70a815efb448219997788fb971, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

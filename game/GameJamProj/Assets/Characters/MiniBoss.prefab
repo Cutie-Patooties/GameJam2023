@@ -165,7 +165,7 @@ MonoBehaviour:
   movementSpeed: 1
   maxHealth: 500
   minibossKillEffect: {fileID: 4666450995212911901, guid: 8cdb4c903e3784f4db35ac50c3627460, type: 3}
-  attackCooldown: 5
+  attackCooldown: 3
   attackDamage: 25
   projectileCooldown: 3
   projectileSpeed: 5

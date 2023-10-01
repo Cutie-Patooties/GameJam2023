@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 2
   maxHealth: 10
-  attackCooldown: 2
+  attackCooldown: 1
   attackDamage: 10
 --- !u!95 &8486240378533398607
 Animator:

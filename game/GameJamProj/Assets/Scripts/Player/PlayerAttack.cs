@@ -86,8 +86,8 @@ public class PlayerAttack : MonoBehaviour
         damageText.text = damageIncrease.ToString("D2");
 
         // Logic for increasing the super meter by a certain rate
-        if (currentEnergy < 100)
-            currentEnergy += (energyRate * (enemyCheck.numberOfEnemies + 1)) * Time.deltaTime;
+        if (currentEnergy < 100 && enemyCheck.numberOfEnemies >= 1)
+            currentEnergy += (energyRate * (enemyCheck.numberOfEnemies)) * Time.deltaTime;
         if (currentEnergy > 100)
             currentEnergy = 100;
         if (currentEnergy == 100)
