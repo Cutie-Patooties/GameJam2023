@@ -12,7 +12,6 @@ public class PowerUpSpawn : MonoBehaviour
     // Variables needed for this script
     public float xRange;
     public float yRange;
-    public float spawnInterval;
     public float maximumPowerups;
 
     [SerializeField] private GameObject[] powerUps;
@@ -20,19 +19,12 @@ public class PowerUpSpawn : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnPowerUps), 10f, spawnInterval);
+        SpawnPowerUps();
     }
 
     public void SpawnPowerUps()
     {
-        if (currentPowerUps.Count >= maximumPowerups)
-        {
-            GameObject powerUpToDestroy = currentPowerUps[0];
-            currentPowerUps.RemoveAt(0);
-            Destroy(powerUpToDestroy);
-        }
-
-        if (currentPowerUps.Count < maximumPowerups)
+        for(int p = 0; p < maximumPowerups; p++)
         {
             int randomIndex = Random.Range(0, powerUps.Length);
             GameObject selectedPowerUp = powerUps[randomIndex];

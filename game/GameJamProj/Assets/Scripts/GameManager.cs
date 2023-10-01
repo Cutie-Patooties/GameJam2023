@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         }
 
         powerupSpawner.CancelInvoke("SpawnPowerUps");
-        powerupSpawner.InvokeRepeating("SpawnPowerUps", 10f, powerupSpawner.spawnInterval);
+        powerupSpawner.SpawnPowerUps();
         powerupSpawner.ClearPowerUps();
 
         playerController.currentHealth += wavePlayerHealthRecovery;
