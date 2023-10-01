@@ -1,7 +1,7 @@
 /**
  * Author: Hudson
  * Contributors: 
- * Description: Defines the shotgun ranged weapon
+ * Description: Easter egg sound effect
 **/
 
 using System.Collections;

@@ -173,7 +173,7 @@ MonoBehaviour:
   buttonSpriteHover: {fileID: 0}
   enableSwitchScene: 0
   openExternalLinkInstead: 1
-  sceneName: https://linkedin.com/
+  sceneName: https://www.linkedin.com/in/hyungjin-jeong-869121248/
   enableQuitGame: 0
 --- !u!61 &213686696
 BoxCollider2D:
@@ -322,7 +322,7 @@ MonoBehaviour:
   buttonSpriteHover: {fileID: 0}
   enableSwitchScene: 0
   openExternalLinkInstead: 1
-  sceneName: https://linkedin.com/
+  sceneName: https://www.artstation.com/madeline-blommel
   enableQuitGame: 0
 --- !u!61 &320636282
 BoxCollider2D:
@@ -1754,7 +1754,7 @@ MonoBehaviour:
   buttonSpriteHover: {fileID: 0}
   enableSwitchScene: 0
   openExternalLinkInstead: 1
-  sceneName: https://linkedin.com/
+  sceneName: https://www.linkedin.com/in/alan-villalobos-ba2193189/
   enableQuitGame: 0
 --- !u!61 &1439215977
 BoxCollider2D:
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   buttonSpriteHover: {fileID: 0}
   enableSwitchScene: 0
   openExternalLinkInstead: 1
-  sceneName: https://linkedin.com/
+  sceneName: https://www.linkedin.com/in/benjamin-dendy-9a01b9188/
   enableQuitGame: 0
 --- !u!61 &2134996557
 BoxCollider2D:
