@@ -840,9 +840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'About
-
-    How to play'
+  m_text: How to Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
   m_sharedMaterial: {fileID: 7228764576910478059, guid: 68bca03882c86b74c859f84304b775b1, type: 2}
