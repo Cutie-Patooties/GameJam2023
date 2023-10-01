@@ -27,15 +27,15 @@ public class LogoEasterEgg : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (logoEasterEgg != null)
+        if (openGithubRepo)
+            Application.OpenURL("https://github.com/Cutie-Patooties/GameJam2023");
+        else if (logoEasterEgg != null)
         {
             // Set sprite to easter egg logo
             GetComponent<SpriteRenderer>().sprite = logoEasterEgg;
             // Play knife sheeng sound
             GetComponent<AudioSource>().Play();
         }
-        if (openGithubRepo)
-            Application.OpenURL("https://github.com/Cutie-Patooties/GameJam2023");
     }
 
 }
