@@ -14,6 +14,9 @@ public class MinibossScript : MonoBehaviour
     // Miniboss chases player slowly, killing miniboss kills all remaining enemies
     public float movementSpeed;
     public float maxHealth;
+    private float currentHealth;
+    private Color originalColor;
+    private SpriteRenderer enemySprite;
     [SerializeField] private GameObject minibossKillEffect;
 
     // Miniboss hurts player same way regular enemies do
@@ -34,8 +37,11 @@ public class MinibossScript : MonoBehaviour
     private void Start()
     {
         enemyrb = GetComponent<Rigidbody2D>();
+        enemySprite = GetComponent<SpriteRenderer>();
         player = GameObject.Find("EntityPlayer");
         game = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        originalColor = enemySprite.color;
 
         canAttack = true;
         InvokeRepeating(nameof(LaunchProjectile), projectileCooldown, projectileCooldown);
@@ -56,6 +62,14 @@ public class MinibossScript : MonoBehaviour
             game.score += 1000;
             Destroy(gameObject);
         }
+
+        // Flash RED to indicate enemy has gotten hit
+
+        if (maxHealth < currentHealth)
+        {
+            StartCoroutine(FlashRed());
+        }
+        currentHealth = maxHealth;
     }
 
     private void LaunchProjectile()
@@ -83,5 +97,12 @@ public class MinibossScript : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
+    }
+
+    IEnumerator FlashRed()
+    {
+        enemySprite.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        enemySprite.color = originalColor;
     }
 }
