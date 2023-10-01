@@ -173,7 +173,7 @@ MonoBehaviour:
   buttonSpriteHover: {fileID: 0}
   enableSwitchScene: 0
   openExternalLinkInstead: 1
-  sceneName: discord.com/users/348208105471082496
+  sceneName: https://www.linkedin.com/in/hyungjin-jeong-869121248/
   enableQuitGame: 0
 --- !u!61 &213686696
 BoxCollider2D:
@@ -322,7 +322,7 @@ MonoBehaviour:
   buttonSpriteHover: {fileID: 0}
   enableSwitchScene: 0
   openExternalLinkInstead: 1
-  sceneName: Sorry for this being late - here's the link!!! https://www.artstation.com/madeline-blommel
+  sceneName: https://www.artstation.com/madeline-blommel
   enableQuitGame: 0
 --- !u!61 &320636282
 BoxCollider2D:
