@@ -143,9 +143,8 @@ public class GameManager : MonoBehaviour
             enemySpawner.InvokeRepeating("SpawnEnemies", enemySpawner.startTime, enemySpawner.spawnInterval);
         }
 
-        powerupSpawner.CancelInvoke("SpawnPowerUps");
-        powerupSpawner.SpawnPowerUps();
         powerupSpawner.ClearPowerUps();
+        powerupSpawner.SpawnPowerUps();
 
         playerController.currentHealth += wavePlayerHealthRecovery;
         if (playerController.currentHealth > playerController.maxHealth)
