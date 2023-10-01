@@ -500,7 +500,7 @@ MonoBehaviour:
   superRadius: {fileID: 5853749807512181003}
   superMeter: {fileID: 0}
   superDuration: 0.6
-  energyRate: 0.5
+  energyRate: 0.35
 --- !u!114 &6705071362936383587
 MonoBehaviour:
   m_ObjectHideFlags: 0
